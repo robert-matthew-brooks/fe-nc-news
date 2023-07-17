@@ -77,3 +77,9 @@
     - recent comments with link to related article? (would need to modify backend to allow sql to filter comments by provided username)
 
 ![User planning](user.png)
+
+## Whole Project View
+
+This is the initial planned component tree for the whole project (when the above component routes are joined to the website template)
+
+![Global component tree](master-component-tree.png)
