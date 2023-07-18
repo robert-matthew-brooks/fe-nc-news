@@ -1,0 +1,27 @@
+:root {
+    /***********
+    * template *
+    ***********/
+
+    --app-bg-colour: #ffc0c0;
+
+    --header-bg-colour: #c0ffc0;
+
+    --menu-bg-colour: #ffffc0;
+
+    --footer-bg-colour: #c0c0ff;
+
+    --loading-bg-colour: #00000080;
+
+
+
+    /****************
+    * articles list *
+    ****************/
+
+    --articles-list-bg-colour: #c0c0c0;
+
+    --articles-sort-bg-colour: #c0c0ff;
+
+    --articles-card-bg-colour: #ffffff;
+}
