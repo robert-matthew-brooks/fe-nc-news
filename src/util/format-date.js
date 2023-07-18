@@ -38,3 +38,15 @@ export function getTimeAgo(dateStr) {
     else if (deltaMinutes > 0) return `${deltaMinutes} days ago`;
     else return `${deltaSeconds} days ago`;
 }
+
+export function getFormattedDate(dateStr) {
+    if (!dateStr) return '';
+    
+    const date = new Date(dateStr);
+
+    return `
+        ${date.getDate()}
+        ${['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][date.getMonth()]}
+        ${date.getFullYear()}
+    `;
+}

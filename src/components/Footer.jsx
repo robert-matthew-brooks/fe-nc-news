@@ -1,11 +1,9 @@
 import '../css/Footer.css';
 
-function Footer() {
+export default function Footer() {
     return (
         <footer>
             <a href="https://github.com/robert-matthew-brooks/fe-nc-news">GitHub</a>
         </footer>
     )
   }
-  
-  export default Footer;

@@ -4,10 +4,11 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './Header.jsx';
 import Menu from './Menu.jsx';
 import Articles from './Articles.jsx';
+import Article from './Article.jsx';
 import Footer from './Footer.jsx';
 import '../css/App.css';
 
-function App() {
+export default function App() {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
 
 	return (
@@ -17,11 +18,10 @@ function App() {
 
 			<Routes>
 				<Route path="/articles" element={<Articles />} />
+				<Route path="/articles/:article_id" element={<Article />} />
 			</Routes>
 
 			<Footer />
 		</div>
 	);
 }
-
-export default App;

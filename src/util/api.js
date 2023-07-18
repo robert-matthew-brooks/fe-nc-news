@@ -1,10 +1,13 @@
-export async function apiRequest(endpoint, options) {
-    try {
-        const response = await fetch(`https://be-nc-news-nvms.onrender.com/api${endpoint}`, options);
-        return await response.json();
-    }
+export async function apiRequest(endpoint, options = {}) {
+    options.headers = {
+        'Content-type': 'application/json; charset=UTF-8',
+    };
+
+    const response = await fetch(`https://be-nc-news-nvms.onrender.com/api${endpoint}`, options);
     
-    catch(err) {
-        throw new Error(err);
+    if ([400, 500].includes(response.status)) {
+        throw new Error();
     }
+
+    return await response.json();
 }

@@ -18,3 +18,16 @@ body {
     align-items: center;
     background-color: var(--loading-bg-colour);
 }
+
+
+
+/*******************
+*** TEMP PADDING ***
+*******************/
+
+.articles-card,
+.article,
+h1,
+nav {
+    padding: 1em;
+}

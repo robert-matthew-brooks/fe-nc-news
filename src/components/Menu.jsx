@@ -8,7 +8,7 @@ const menuItems = [
     }
 ];
 
-function Menu({ isMenuVisible, setIsMenuVisible }) {
+export default function Menu({ isMenuVisible, setIsMenuVisible }) {
     return (
         <nav className={isMenuVisible ? '' : 'hidden'}>
             {menuItems.map((menuItem, i) => {
@@ -21,6 +21,4 @@ function Menu({ isMenuVisible, setIsMenuVisible }) {
             <button onClick={() => {setIsMenuVisible(!isMenuVisible)}}>X</button>
         </nav>
     )
-  }
-  
-  export default Menu;
+}

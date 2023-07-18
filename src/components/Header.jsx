@@ -1,7 +1,7 @@
 import HeaderLogin from './HeaderLogin';
 import '../css/Header.css';
 
-function Header({ isMenuVisible, setIsMenuVisible }) {
+export default function Header({ isMenuVisible, setIsMenuVisible }) {
     return (
         <header>
             <button onClick={() => setIsMenuVisible(!isMenuVisible)}>
@@ -13,6 +13,4 @@ function Header({ isMenuVisible, setIsMenuVisible }) {
             <HeaderLogin />
         </header>
     )
-  }
-  
-  export default Header;
+}

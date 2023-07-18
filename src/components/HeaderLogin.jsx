@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { apiRequest } from '../util/api';
 import { UserContext } from '../context/User';
 
-function HeaderLogin() {
+export default function HeaderLogin() {
     const {
         userDetails,
         setUserDetails,
@@ -34,5 +34,3 @@ function HeaderLogin() {
         );
     }
 }
-
-export default HeaderLogin;
