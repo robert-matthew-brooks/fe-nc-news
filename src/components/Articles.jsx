@@ -12,7 +12,6 @@ export default function Articles() {
     const [totalArticles, setTotalArticles] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [articlesPerPage, setArticlesPerPage] = useState(10);
-
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {

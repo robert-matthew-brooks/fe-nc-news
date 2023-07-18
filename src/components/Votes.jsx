@@ -1,18 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { apiRequest } from '../util/api';
 
 export default function Votes({ votes, patchUrl }) {
-    const [localVote, setLocalVote] = useState(0);
+    const [upVote, setUpVote] = useState(false);
+    const [downVote, setDownVote] = useState(false);
     const [isError, setIsError] = useState(false);
 
-    async function handleVote() {
-        let inc_votes;
+    async function handleVote(type) {
+        let inc_votes = 0;
 
-        if (!localVote) inc_votes = 1;
-        else inc_votes = -1;
+        if (type === 'up') {
+            inc_votes += (!upVote ? 1 : -1);
+            setUpVote(!upVote);
 
-        setLocalVote(localVote + inc_votes);
+            if (downVote) {
+                inc_votes += 1;
+                setDownVote(false);
+            }
+        }
 
+        else if (type === 'down') {
+            inc_votes += (!downVote ? -1 : 1);
+            setDownVote(!downVote);
+
+            if (upVote) {
+                inc_votes -= 1;
+                setUpVote(false);
+            }
+        }
+    
         try {
             await apiRequest(patchUrl, {
                 method: 'PATCH',
@@ -24,7 +40,7 @@ export default function Votes({ votes, patchUrl }) {
             setIsError(true);
         }
     }
-    
+
     if (isError) {
         return (
             <div>Unable to load votes</div>
@@ -33,11 +49,15 @@ export default function Votes({ votes, patchUrl }) {
     else if (!isNaN(votes)) {
         return (
             <div>
-                <button onClick={handleVote}>
-                    {!localVote ? 'Vote' : 'Unvote'}
+                <button onClick={() => handleVote('up')}>
+                    {!upVote ? 'upvote' : 'undo'}
                 </button>
                 
-                {votes + localVote} {votes + localVote === 1 ? 'vote' : 'votes'}
+                {votes + (upVote ? 1 : 0) + (downVote ? -1 : 0)}
+
+                <button onClick={() => handleVote('down')}>
+                    {!downVote ? 'downvote' : 'undo'}
+                </button>
             </div>
         );
     }

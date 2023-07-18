@@ -15,8 +15,8 @@ export default function ArticlesCard({ article_id, article_img_url, title, autho
                 <img src={article_img_url} alt={title}/>
             </Link>
             <p>
-                <span>{votes} votes</span>
-                <span>{comment_count} comments</span>
+                <span>{votes} {votes === 1 ? 'vote' : 'votes'}</span>
+                <span>{comment_count} {comment_count === 1 ? 'comment' : 'comments'}</span>
             </p>
         </div>
     );

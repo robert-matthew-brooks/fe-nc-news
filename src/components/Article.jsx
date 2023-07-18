@@ -5,6 +5,7 @@ import { getFormattedDate } from '../util/format-date.js';
 
 import Title from './Title.jsx';
 import Votes from './Votes.jsx';
+import Comments from './Comments.jsx';
 import '../css/Article.css';
 
 export default function Articles() {
@@ -42,7 +43,7 @@ export default function Articles() {
                 <Votes votes={article.votes} patchUrl={`/articles/${article_id}`} />
             </article>
 
-            <p>comments will go here</p>
+            <Comments article_id={article_id} />
         </main>
     )
 }

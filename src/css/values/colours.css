@@ -24,4 +24,17 @@
     --articles-sort-bg-colour: #c0c0ff;
 
     --articles-card-bg-colour: #ffffff;
+
+
+
+    /**********
+    * article *
+    ***********/
+    
+    
+    /****************
+    * comments list *
+    ****************/
+
+    --comments-list-bg-colour: #ffc0ff;
 }
