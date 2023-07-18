@@ -1,0 +1,8 @@
+.articles-pagination > button:disabled {
+    font-weight: bold;
+}
+
+.articles-pagination > button:first-of-type:disabled,
+.articles-pagination > button:last-of-type:disabled {
+    visibility: hidden;
+}

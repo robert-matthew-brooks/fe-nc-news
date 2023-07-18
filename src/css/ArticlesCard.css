@@ -1,0 +1,14 @@
+.articles-card {
+    display: block;
+    background-color: var(--articles-card-bg-colour);
+    border: 1px solid black;
+}
+
+.articles-card > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.articles-card > a > img {
+    max-width: 100px;
+}
