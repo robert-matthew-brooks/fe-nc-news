@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { getTimeAgo } from '../util/format-date.js';
 import '../css/ArticlesCard.css';
 
-function ArticlesCard({ article_id, article_img_url, title, author, created_at, votes, comment_count }) {
+export default function ArticlesCard({ article_id, article_img_url, title, author, created_at, votes, comment_count }) {
     return (
         <div key={article_id} className="articles-card">
             <p>
@@ -10,7 +10,7 @@ function ArticlesCard({ article_id, article_img_url, title, author, created_at, 
                 &nbsp;-&nbsp;
                 <span>{getTimeAgo(created_at)}</span>
             </p>
-            <Link to={{ pathname: `articles/${article_id}` }}>
+            <Link to={{ pathname: `/articles/${article_id}` }}>
                 <h3>{title}</h3>
                 <img src={article_img_url} alt={title}/>
             </Link>
@@ -21,5 +21,3 @@ function ArticlesCard({ article_id, article_img_url, title, author, created_at, 
         </div>
     );
 }
-
-export default ArticlesCard;

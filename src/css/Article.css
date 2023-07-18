@@ -1,0 +1,13 @@
+.article {
+    display: flex;
+    flex-direction: column;
+}
+
+.article > article {
+    flex-grow: 1;
+    position: relative;
+}
+
+.article > article > p > img {
+    max-width: 50%;
+}

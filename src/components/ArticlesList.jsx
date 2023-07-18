@@ -1,7 +1,7 @@
 import ArticlesCard from './ArticlesCard.jsx';
 import '../css/ArticlesList.css';
 
-function ArticlesList({ articles, isLoading }) {
+export default function ArticlesList({ articles, isLoading }) {
 	return (
 		<section className="articles-list">
 			<div className={isLoading ? 'loading' : 'hidden'}>Loading Articles...</div>
@@ -20,5 +20,3 @@ function ArticlesList({ articles, isLoading }) {
 		</section>
 	);
 }
-
-export default ArticlesList;

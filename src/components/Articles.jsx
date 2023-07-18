@@ -7,7 +7,7 @@ import ArticlesList from './ArticlesList';
 import ArticlesPagination from './ArticlesPagination.jsx';
 import '../css/Articles.css';
 
-function Articles() {
+export default function Articles() {
     const [articles, setArticles] = useState([]);
     const [totalArticles, setTotalArticles] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +24,7 @@ function Articles() {
             setArticles(articles);
             setTotalArticles(total_count);
             setIsLoading(false);
-        })()
+        })();
     }, [currentPage]);
 
     return (
@@ -43,6 +43,4 @@ function Articles() {
             />
         </main>
     )
-  }
-  
-  export default Articles;
+}

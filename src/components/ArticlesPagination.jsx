@@ -1,6 +1,6 @@
 import '../css/ArticlesPagination.css';
 
-function ArticlesPagination({ currentPage, setCurrentPage, totalArticles, articlesPerPage }) {
+export default function ArticlesPagination({ currentPage, setCurrentPage, totalArticles, articlesPerPage }) {
     const totalPages = Math.ceil(totalArticles / articlesPerPage);
 
     const pageNumbers = [];
@@ -47,5 +47,3 @@ function ArticlesPagination({ currentPage, setCurrentPage, totalArticles, articl
         </section>
     );
 }
-
-export default ArticlesPagination;
