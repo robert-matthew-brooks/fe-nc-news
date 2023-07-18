@@ -16,7 +16,7 @@ export default function Votes({ votes, patchUrl }) {
         try {
             await apiRequest(patchUrl, {
                 method: 'PATCH',
-                body: JSON.stringify({ inc_votes: 'a' })
+                body: JSON.stringify({ inc_votes })
             });
         }
 

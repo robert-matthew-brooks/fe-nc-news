@@ -8,6 +8,6 @@ export async function apiRequest(endpoint, options = {}) {
     if ([400, 500].includes(response.status)) {
         throw new Error();
     }
-    
+
     return await response.json();
 }
