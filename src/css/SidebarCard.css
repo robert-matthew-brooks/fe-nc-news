@@ -1,6 +1,6 @@
 .sidebar-card {
     position: relative;
-    width: 250px;
+    width: calc(var(--sidebar-width) - (var(--sidebar-gutter-width) * 2));
     aspect-ratio: 1.2;
     overflow: hidden;
     background-size: cover;

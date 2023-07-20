@@ -14,7 +14,7 @@ export default function Sidebar() {
             setIsLoading(true);
 
             try {
-                const { articles } = await fetchArticles({ sort_by: 'comment_count', limit: 5 });
+                const { articles } = await fetchArticles({ sort_by: 'comment_count', limit: 30 });
                 setArticles(articles);
             }
             catch {
