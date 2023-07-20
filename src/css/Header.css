@@ -19,7 +19,7 @@ header > a.logo {
     padding: 0.3em;
     border-radius: 0.3em;
 }
-header > a > img {
+header > a.logo > img {
     display: inline;
     width: 1.5em;
     height: 1.5em;
