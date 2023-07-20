@@ -46,8 +46,17 @@
     border: 1px solid var(--border-medium);
 }
 
-.articles-card > a > p.comments-and-votes {
+.articles-card > p.comments-and-votes {
     margin-top: 0.5em;
+}
+
+.articles-card > p.comments-and-votes > a {
+    color: inherit;
+    text-decoration: none;
+}
+.articles-card > p.comments-and-votes > a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
 }
 
 

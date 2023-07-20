@@ -74,6 +74,6 @@
     height: 4em;
 }
 
-
-@media (min-width: 768px) {
+.anchor {
+    visibility: none;
 }

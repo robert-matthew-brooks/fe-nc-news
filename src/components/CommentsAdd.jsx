@@ -12,6 +12,12 @@ export default function CommentsAdd({ article_id, comments, setComments, totalCo
 	const textarea = document.getElementById('comment-body');
     const button = document.getElementById('comment-submit-btn');
 
+    useEffect(() => {
+        setComment('');
+        setWarning('');
+        if (textarea) textarea.classList.remove('invalid');
+    }, [article_id]);
+
 	async function handleSubmit(event) {
 		event.preventDefault();
 
