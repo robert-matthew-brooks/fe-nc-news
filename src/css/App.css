@@ -40,13 +40,13 @@
     opacity: 0.5;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1366px) {
     .app > main {
         border-left: 1px solid var(--border-weak);
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .app > main {
         border-right: 1px solid var(--border-weak);
     }
