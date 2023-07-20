@@ -4,7 +4,6 @@ import '../css/ArticlesList.css';
 export default function ArticlesList({ articles, isLoading }) {
 	return (
 		<section className="articles-list">
-			<div className={isLoading ? 'loading' : 'hidden'}>Loading Articles...</div>
 			{articles.map(article => {
 				return <ArticlesCard
 					key={article.article_id}

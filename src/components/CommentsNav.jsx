@@ -1,9 +1,12 @@
-import '../css/CommentsPagination.css';
+import '../css/CommentsNav.css';
 
-export default function CommentsPagination({ displayedComments, totalComments, limit, setLimit, isLoading }) {
+export default function CommentsNav({ displayedComments, totalComments, limit, setLimit, isLoading }) {
     if (displayedComments) {
         return (
-            <section className="comments-pagination">
+            <section className="comments-nav">
+                <p>
+                    Comments <span>1 - {displayedComments}</span> of <span>{totalComments}</span>
+                </p>
                 <button
                     onClick={() => setLimit(limit + 10)}
                     className={displayedComments === totalComments ? 'hidden' : ''}
@@ -11,9 +14,6 @@ export default function CommentsPagination({ displayedComments, totalComments, l
                 >
                     Load more comments...
                 </button>
-                <p>
-                    Comments 1 - {displayedComments} of {totalComments}
-                </p>
             </section>
         );
     }

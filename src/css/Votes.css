@@ -1,0 +1,42 @@
+.votes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.votes.negative {
+    color: var(--votes-negative);
+}
+
+.votes > button {
+    padding: 0.2em;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.votes > button > img {
+    max-width: 100%;
+    aspect-ratio: 1;
+}
+.votes > button:hover {
+    background-color: var(--secondary-bg);
+}
+
+.votes > button.up {
+    transform: rotate(0deg);
+}
+.votes > button.down {
+    transform: rotate(180deg);
+}
+.votes > button.up-active {
+    background-color: var(--votes-up-bg) !important;
+}
+.votes > button.down-active {
+    background-color: var(--votes-down-bg) !important;
+}
+
+.votes > span {
+    margin: 0 0.2em;
+}

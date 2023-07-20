@@ -1,16 +1,21 @@
+import { Link } from 'react-router-dom';
 import HeaderLogin from './HeaderLogin';
+import MenuImg from '../img/menu.svg';
 import '../css/Header.css';
 
 export default function Header({ isMenuVisible, setIsMenuVisible }) {
     return (
         <header>
-            <button onClick={() => setIsMenuVisible(!isMenuVisible)}>
-                &equiv;
+            <button
+                className="menu-btn"
+                onClick={() => setIsMenuVisible(!isMenuVisible)}
+            >
+                <img src={MenuImg} alt="open menu" />
             </button>
-            <div>
-                NC News
-            </div>
+            <Link className="logo" to={{ pathname: '/'}}>
+                <h2>NC News</h2>
+            </Link>
             <HeaderLogin />
         </header>
-    )
+    );
 }

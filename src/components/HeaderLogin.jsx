@@ -1,7 +1,8 @@
-import { useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { apiRequest } from '../util/api';
+import { fetchUser } from '../util/api';
 import { UserContext } from '../context/User';
+import '../css/HeaderLogin.css';
 
 export default function HeaderLogin() {
     const {
@@ -10,27 +11,36 @@ export default function HeaderLogin() {
         isUserLoggedIn,
         setIsUserLoggedIn
     } = useContext(UserContext);
+    const [isError, setIsError] = useState(false);
 
-    useEffect(() => {
-        (async () => {
-            const { user } = await apiRequest('/users/tickle122');
+    async function login(event) {
+        event.target.disabled = true;
+
+        try {
+            const { user } = await fetchUser('tickle122');
             setUserDetails(user);
             setIsUserLoggedIn(true);
-        })();
-    }, []);
+        }
+        catch {
+            setIsError(true);
+        }
+    }
 
-    if (isUserLoggedIn) {
+    if (isError) {
+        return <div className="error">Unable to load user</div>;
+    }
+    else if (isUserLoggedIn) {
         return (
-            <Link to={{ pathname: `/users/${userDetails.username}`}}>
+            <Link className="profile-link" to={{ pathname: `/users/${userDetails.username}`}}>
                 <img src={userDetails.avatar_url} alt={`${userDetails.username}'s avatar`}/>
             </Link>
         );
     }
     else {
         return (
-            <Link to={{ pathname: '/login'}}>
+            <button className="login-btn" onClick={event => login(event)}>
                 Login
-            </Link>
+            </button>
         );
     }
 }

@@ -1,0 +1,30 @@
+.comments-nav {
+    padding: 1em;
+    text-align: center;
+}
+
+.comments-nav > p {
+    font-size: 0.9em;
+    margin: 1em 0;
+}
+
+.comments-nav > p > span {
+    font-size: 1.1rem;
+    margin: 0 0.5em;
+}
+
+.comments-nav > button {
+    width: fit-content;
+    display: inline-block;
+    margin: 1em 0;
+    padding: 0.7em;
+    font-size: 0.9em;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-weak);
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.comments-nav > button:hover {
+    border-color: var(--border-medium);
+}

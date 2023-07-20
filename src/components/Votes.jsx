@@ -1,64 +1,74 @@
-import { useState } from 'react';
-import { apiRequest } from '../util/api';
+import { useState, useEffect } from 'react';
+import { patchVotes } from '../util/api';
+import { getFormattedNumber } from '../util/format';
+import VoteImg from '../img/arrow.png';
+import '../css/Votes.css';
 
-export default function Votes({ votes, patchUrl }) {
+export default function Votes({ patchUrl, votes }) {
     const [upVote, setUpVote] = useState(false);
     const [downVote, setDownVote] = useState(false);
+    const [optimisticVotes, setOptimisticVotes] = useState(0);
     const [isError, setIsError] = useState(false);
 
     async function handleVote(type) {
-        let inc_votes = 0;
+        let incVotes = 0;
 
         if (type === 'up') {
-            inc_votes += (!upVote ? 1 : -1);
+            incVotes += (!upVote ? 1 : -1);
             setUpVote(!upVote);
 
             if (downVote) {
-                inc_votes += 1;
+                incVotes += 1;
                 setDownVote(false);
             }
         }
 
         else if (type === 'down') {
-            inc_votes += (!downVote ? -1 : 1);
+            incVotes += (!downVote ? -1 : 1);
             setDownVote(!downVote);
 
             if (upVote) {
-                inc_votes -= 1;
+                incVotes -= 1;
                 setUpVote(false);
             }
         }
     
         try {
-            await apiRequest(patchUrl, {
-                method: 'PATCH',
-                body: JSON.stringify({ inc_votes })
-            });
+            await patchVotes(patchUrl, incVotes);
         }
-
         catch(err) {
             setIsError(true);
         }
     }
 
+    useEffect(() => {
+        if (!isNaN(votes)) setOptimisticVotes(votes + (upVote ? 1 : 0) + (downVote ? -1 : 0))
+    }, [votes, upVote, downVote]);
+
     if (isError) {
-        return (
-            <div>Unable to load votes</div>
-        );
+        return <div className="error">Unable to update votes</div>;
     }
     else if (!isNaN(votes)) {
         return (
-            <div>
-                <button onClick={() => handleVote('up')}>
-                    {!upVote ? 'upvote' : 'undo'}
+            <figure className={`votes ${optimisticVotes < 0 ? 'negative' : ''}`}>
+                <button
+                    className={`up ${upVote ? 'up-active' : ''}`}
+                    onClick={() => handleVote('up')}
+                >
+                    <img src={VoteImg} alt="vote up" />
                 </button>
                 
-                {votes + (upVote ? 1 : 0) + (downVote ? -1 : 0)}
+                <span>
+                    {getFormattedNumber(optimisticVotes)}
+                </span>
 
-                <button onClick={() => handleVote('down')}>
-                    {!downVote ? 'downvote' : 'undo'}
+                <button
+                    className={`down ${downVote ? 'down-active' : ''}`}
+                    onClick={() => handleVote('down')}
+                >
+                    <img src={VoteImg} alt="vote down" />
                 </button>
-            </div>
+            </figure>
         );
     }
 }

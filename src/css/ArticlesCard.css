@@ -1,14 +1,67 @@
 .articles-card {
-    display: block;
-    background-color: var(--articles-card-bg-colour);
-    border: 1px solid black;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--primary-bg);
+    border-top: 1px solid var(--border-weak);
+    border-bottom: 1px solid var(--border-weak);
 }
-
 .articles-card > a {
+    display: block;
     color: inherit;
     text-decoration: none;
 }
+.articles-card:hover {
+    border-color: var(--border-medium);
+}
+
+
+.articles-card p {
+    margin: 0;
+    padding: 0.5em;
+    color: var(--primary-text-weak);
+    font-size: 0.9em;
+    background-color: var(--primary-bg-weak);
+}
+
+.articles-card > p.user-and-time > a {
+    font-weight: bold;
+    color: var(--primary-href);
+}
+.articles-card > p.user-and-time > a:hover {
+    color: var(--primary-href-hover);
+}
+
+.articles-card > a > h3 {
+    margin: 0;
+    padding: 0.6em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
 
 .articles-card > a > img {
-    max-width: 100px;
+    max-width: 100%;
+    max-height: 300px;
+    display: block;
+    margin: auto;
+    border: 1px solid var(--border-medium);
+}
+
+.articles-card > a > p.comments-and-votes {
+    margin-top: 0.5em;
+}
+
+
+@media (min-width: 768px) {
+    .articles-card {
+        border: 1px solid var(--border-weak);
+        border-radius: 0.2em;
+    }
+
+    .articles-card > a > h3 {
+        padding: 0.9em 0.6em;
+    }
+
+    .articles-card p {
+        font-size: 0.8em;
+    }
 }

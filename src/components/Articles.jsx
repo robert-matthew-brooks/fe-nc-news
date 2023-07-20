@@ -1,45 +1,72 @@
 import { useState, useEffect } from 'react'
-import { apiRequest } from '../util/api.js';
-
+import { fetchArticles } from '../util/api.js';
 import Title from './Title.jsx';
 import ArticlesSort from './ArticlesSort.jsx';
-import ArticlesList from './ArticlesList';
-import ArticlesPagination from './ArticlesPagination.jsx';
+import ArticlesCard from './ArticlesCard';
+import ArticlesNav from './ArticlesNav.jsx';
+import LoadingImg from '../img/loading.png';
 import '../css/Articles.css';
 
 export default function Articles() {
     const [articles, setArticles] = useState([]);
     const [totalArticles, setTotalArticles] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
     const [articlesPerPage, setArticlesPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
 
-            const { articles, total_count } = await apiRequest(`/articles?p=${currentPage}`);
+            try {
+                const { articles, total_count } = await fetchArticles({ p: currentPage });
+                setArticles(articles);
+                setTotalArticles(total_count);
+            }
+            catch {
+                setIsError(true);
+            }
 
-            setArticles(articles);
-            setTotalArticles(total_count);
             setIsLoading(false);
         })();
     }, [currentPage]);
 
-    return (
+    if (isError) {
+        return <div className="error">Unable to load articles</div>;
+    }
+    else return (
         <main className="articles">
             <Title title="Articles" />
+
             <ArticlesSort />
-            <ArticlesList
-                articles={articles}
-                isLoading={isLoading}
-            />
-            <ArticlesPagination
+
+            <section className="articles-list">
+                {articles.map(article => {
+                    return <ArticlesCard
+                        key={article.article_id}
+                        article_id={article.article_id}
+                        article_img_url={article.article_img_url}
+                        title={article.title}
+                        author={article.author}
+                        created_at={article.created_at}
+                        votes={article.votes}
+                        comment_count={article.comment_count}
+                    />;
+                })}
+            </section>
+
+            <ArticlesNav
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
-                totalArticles={totalArticles}
                 articlesPerPage={articlesPerPage}
+                totalArticles={totalArticles}
+                isLoading={isLoading}
             />
+
+            <div className={isLoading ? 'loading' : 'hidden'}>
+                <img src={LoadingImg} alt="loading" />
+            </div>
         </main>
-    )
+    );
 }

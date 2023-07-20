@@ -3,7 +3,17 @@ import '../css/ArticlesSort.css';
 export default function ArticlesSort() {
 	return (
 		<section className="articles-sort">
-			sort articles will go here
+			<select>
+				<option>Placeholder</option>
+			</select>
+
+			<select>
+			<option>Placeholder</option>
+			</select>
+
+			<select>
+				<option>Placeholder</option>
+			</select>
 		</section>
 	);
 }

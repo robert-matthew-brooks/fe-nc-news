@@ -1,10 +1,37 @@
 .app {
-    min-height: 100vh;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--app-bg-colour);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-rows:  min-content 1fr min-content;
+    grid-template-areas:
+        "header header header"
+        "nav main sidebar"
+        "footer footer footer";
+    background-color: var(--primary-bg);
+}
+.app > header {
+    grid-area: header;
 }
 .app > main {
-    flex-grow: 1;
+    grid-area: main;
+    position: relative;
+}
+.app > aside {
+    grid-area: sidebar;
+}
+.app > footer {
+    grid-area: footer;
+}
+
+@media (min-width: 1024px) {
+    .app > main {
+        border-left: 1px solid var(--border-weak);
+    }
+}
+
+@media (min-width: 768px) {
+    .app > main {
+        border-right: 1px solid var(--border-weak);
+    }
 }

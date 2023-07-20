@@ -1,0 +1,24 @@
+header > button.login-btn {
+    font-size: 0.9em;
+    padding: 0.4em 0.6em;
+    background-color: var(--login-btn-bg);
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+}
+header > button.login-btn:hover {
+    background-color: var(--login-btn-bg-hover);
+}
+
+header > a.profile-link > img {
+    height: 2em;
+    display: block;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--border-medium);
+    border-radius: 0.3em;
+}
+header > a.profile-link:hover > img {
+    background-color: var(--secondary-bg);
+    border-color: var(--border-strong);
+}

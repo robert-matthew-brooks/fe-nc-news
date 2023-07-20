@@ -1,29 +1,88 @@
+.menu-overlay {
+    position: fixed;
+    z-index: 98;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--loading-bg);
+}
+
+.menu-btn {
+    width: 1em;
+    height: 1em;
+    display: flex;
+    align-items: center;
+    padding: 0.2em;
+    font-size: 2em;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.3em;
+}
+.menu-btn > img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.menu-btn:hover {
+    background-color: var(--secondary-bg);
+    cursor: pointer;
+}
+
 nav {
-    background-color: var(--menu-bg-colour);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    max-width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: var(--primary-bg);
+    transition: 0.2s;
+}
+nav.closed {
+    left: -300px;
 }
 
-nav > button {
-    display: none;
-    float: right;
+nav > button.menu-btn {
+    align-self: flex-end;
+    margin: 0.3em 0.3em 0 0;
 }
 
-@media screen and (max-width: 768px) {
+nav > a {
+    padding: 1em 4em 1em 2em;
+    color: inherit;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+nav > a:first-of-type {
+    margin-top: 0.5em;
+}
+nav > a:hover {
+    background-color: var(--secondary-bg);
+}
+
+@media (min-width: 1366px) {
+    .menu-overlay {
+        display: none;
+    }
+
     nav {
-        position: fixed;
+        height: fit-content;
+        position: sticky;
         top: 0;
-        left: 0;
-        z-index: 99;
-        min-width: 40%;
-        height: 100%;
+        z-index: initial;
+        grid-area: nav;
     }
 
-    nav > button {
-        display: block;
+    nav > a {
+        font-size: 1em;
+        padding: 1em 2.5em;
     }
-}
+    nav > a:first-of-type {
+        margin-top: 0;
+    }
 
-@media screen and (min-width: 769px) {
-    nav {
-        display: block !important;
+    .menu-btn {
+        display: none;
     }
 }

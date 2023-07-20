@@ -1,40 +1,32 @@
 :root {
-    /***********
-    * template *
-    ***********/
+    --primary-bg: #ffffff;
+    --primary-bg-weak: #f8f8f8;
+    --secondary-bg: #f0f0f0;
+    --contrast-bg: #202020;
 
-    --app-bg-colour: #ffc0c0;
+    --primary-text: #000000;
+    --primary-text-weak: #404040;
+    --contrast-text: #ffffff;
 
-    --header-bg-colour: #c0ffc0;
+    --primary-href: #0000a0;
+    --primary-href-hover: #0000ff;
 
-    --menu-bg-colour: #ffffc0;
+    --border-strong: #000000;
+    --border-medium: #606060;
+    --border-weak: #c0c0c0;
 
-    --footer-bg-colour: #c0c0ff;
+    --loading-bg: #00000080;
 
-    --loading-bg-colour: #00000030;
+    --login-btn-bg: #60ff60;
+    --login-btn-bg-hover: #60c060;
 
+    --votes-negative: #800000;
+    --votes-up-bg: #80ff80;
+    --votes-down-bg: #ffa0a0;
 
+    --sidebar-item-bg: #ffffffc0;
 
-    /****************
-    * articles list *
-    ****************/
-
-    --articles-list-bg-colour: #c0c0c0;
-
-    --articles-sort-bg-colour: #c0c0ff;
-
-    --articles-card-bg-colour: #ffffff;
-
-
-
-    /**********
-    * article *
-    ***********/
-    
-    
-    /****************
-    * comments list *
-    ****************/
-
-    --comments-list-bg-colour: #ffc0ff;
+    --error-text: #ff0000;
+    --error-symbol: #000000;
+    --error-bg: #ffc0c0;
 }
