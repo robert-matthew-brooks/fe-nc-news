@@ -35,6 +35,8 @@ export default function Comments({ article_id }) {
 	else return (
 		<section className="comments">
 			<h2>Comments:</h2>
+
+            {totalComments === 0 && !isLoading ? 'Be the first to add a comment! (this condition/message will become part of add comment form)' : ''}
 			
 			<section className="comments-list">
 				{comments.map(comment => {
