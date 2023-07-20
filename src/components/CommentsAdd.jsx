@@ -5,13 +5,12 @@ import { scrollToTop } from '../util/scroll-to-top.js';
 import { UserContext } from '../context/User.jsx';
 import '../css/CommentsAdd.css';
 
-export default function CommentsAdd({ article_id, optimisticComments, setOptimisticComments, totalComments, setTotalComments, isLoading }) {
+export default function CommentsAdd({ article_id, comments, setComments, totalComments, setTotalComments, isLoading }) {
     const { userDetails, isUserLoggedIn } = useContext(UserContext);
 	const [comment, setComment] = useState('');
     const [warning, setWarning] = useState('');
 	const textarea = document.getElementById('comment-body');
     const button = document.getElementById('comment-submit-btn');
-    const [isError, setIsError] = useState(false);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -33,27 +32,26 @@ export default function CommentsAdd({ article_id, optimisticComments, setOptimis
             try {
                 const { comment: newComment } = await postComment(article_id, userDetails.username, comment);
 
-                optimisticComments.pop()
-                optimisticComments.unshift(newComment);
-                setOptimisticComments(optimisticComments);
+                comments.pop()
+                comments.unshift(newComment);
+                setComments(comments);
                 setTotalComments(totalComments + 1);
+
+                setTimeout(() => {
+                    setComment('');
+                    button.disabled = false;
+                    textarea.disabled = false; 
+                }, 1000);
             }
             catch {
-                setIsError(true);
-            }
-
-            setTimeout(() => {
-                setComment('');
+                setWarning('Unable to post comment');
                 button.disabled = false;
                 textarea.disabled = false; 
-            }, 1000);
+            }
         }
 	}
 
-    if (isError) {
-        return <div className="error">Unable to post comment</div>;
-    }
-	else return (
+    return (
 		<form className="comments-add" onSubmit={event => handleSubmit(event)}>
 			<label htmlFor="comment-body">
 				Comment:
