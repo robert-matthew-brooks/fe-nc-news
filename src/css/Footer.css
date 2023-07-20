@@ -1,3 +1,17 @@
 footer {
-    background-color: var(--footer-bg-colour);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 1em;
+    background-color: var(--primary-bg-weak);
+    border-top: 1px solid var(--border-weak);
+}
+
+footer > a {
+    color: inherit;
+}
+
+footer > a:hover {
+    text-decoration: none;
 }

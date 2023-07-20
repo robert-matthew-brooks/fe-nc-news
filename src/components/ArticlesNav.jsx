@@ -1,6 +1,6 @@
-import '../css/ArticlesPagination.css';
+import '../css/ArticlesNav.css';
 
-export default function ArticlesPagination({ currentPage, setCurrentPage, totalArticles, articlesPerPage }) {
+export default function ArticlesNav({ currentPage, setCurrentPage, totalArticles, articlesPerPage }) {
     const totalPages = Math.ceil(totalArticles / articlesPerPage);
 
     const pageNumbers = [];
@@ -14,7 +14,7 @@ export default function ArticlesPagination({ currentPage, setCurrentPage, totalA
     );
 
     return (
-        <section className="articles-pagination">
+        <section className="articles-nav">
             <button
                 onClick={() => setCurrentPage(currentPage - 1)}
                 disabled={currentPage === 1}
@@ -36,7 +36,7 @@ export default function ArticlesPagination({ currentPage, setCurrentPage, totalA
 
             <button
                 onClick={() => setCurrentPage(currentPage + 1)}
-                disabled={currentPage === totalPages}
+                disabled={(currentPage === totalPages) || (totalPages === 0)}
             >
                 &gt;
             </button>

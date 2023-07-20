@@ -1,0 +1,28 @@
+.homepage {
+    padding-left: 3em;
+    padding-right: 3em;
+    background-color: var(--primary-bg);
+}
+
+.homepage > p {
+    line-height: 2em;
+}
+.homepage > p > img {
+    min-width: 10em;
+    max-width: 100%;
+    margin: 2em 0;
+    border: 1px solid black;
+}
+
+@media (min-width: 768px) {
+    .homepage {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .homepage > p > img {
+        max-width: 40%;
+        float: left;
+        margin: 0 3em 2em 0;
+    }
+}

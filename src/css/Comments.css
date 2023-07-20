@@ -1,0 +1,18 @@
+.comments {
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+.comments > h2 {
+    font-size: 1.4em;
+    padding: 0.5em 0;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}

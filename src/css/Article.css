@@ -1,13 +1,79 @@
 .article {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .article > article {
     flex-grow: 1;
     position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 2em;
 }
 
-.article > article > p > img {
-    max-width: 50%;
+.article-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.article-details > a > img.author-avatar {
+    height: 3em;
+    display: inline;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--border-medium);
+    border-radius: 50%;
+}
+
+.article-details > a {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--primary-href);
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.article-details > a:hover {
+    color: var(--primary-href-hover);
+}
+
+.article-details > time {
+    color: var(--primary-text-weak);
+    font-size: 0.9em;
+}
+
+.article > article > img {
+    display: block;
+    max-width: 100%;
+    margin: 2em auto 0 auto;
+    border: 1px solid var(--border-medium);
+}
+
+.article > article > p {
+    text-align: left;
+    line-height: 2.5em;
+    padding: 2em 0;
+}
+
+.article > article > figcaption {
+    color: var(--primary-text-weak);
+    text-align: center;
+    font-style: italic;
+}
+
+.article > article > figure {
+    margin-top: 0.2em;
+    font-size: 3em;
+}
+
+.article > article > figure > button {
+    width: 4em;
+    height: 4em;
+}
+
+
+@media (min-width: 768px) {
 }

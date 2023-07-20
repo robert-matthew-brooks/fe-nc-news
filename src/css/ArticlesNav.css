@@ -1,0 +1,34 @@
+.articles-nav {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.articles-nav > button {
+    margin: 1em 0.2em;
+    padding: 0.4em 0.6em;
+    font-size: 1.1em;
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-weak);
+    border-radius: 0.3em;
+}
+
+.articles-nav > button:enabled:hover {
+    border-color: var(--border-medium);
+    cursor: pointer;
+}
+
+.articles-nav > button:disabled {
+    font-weight: bold;
+    color: var(--contrast-text);
+    background-color: var(--contrast-bg);
+}
+
+.articles-nav > button:first-of-type:disabled,
+.articles-nav > button:last-of-type:disabled {
+    display: none;
+}
+
+.articles-nav > p {
+    margin: 1em 0;
+}
