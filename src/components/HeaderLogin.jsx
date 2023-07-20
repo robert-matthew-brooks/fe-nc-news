@@ -38,8 +38,8 @@ export default function HeaderLogin() {
     }
     else {
         return (
-            <button className="login-btn" onClick={event => login(event)}>
-                Login
+            <button className="submit-btn" onClick={event => login(event)}>
+                Sign In
             </button>
         );
     }

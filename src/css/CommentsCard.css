@@ -28,7 +28,7 @@
 
 .comments-card > figure {
     grid-area: vote;
-    padding-right: 1em;
+    padding-right: 0.3em;
     background-color: var(--secondary-bg);
 }
 
@@ -38,7 +38,6 @@
 }
 
 .comments-card > figure > span {
-
     font-weight: bold;
 }
 

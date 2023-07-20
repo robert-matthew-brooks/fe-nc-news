@@ -1,15 +1,91 @@
-import { useState, useEffect } from 'react';
-import { apiRequest } from '../util/api.js';
-import CommentsList from './CommentsList.jsx';
-import CommentsPagination from './CommentsPagination.jsx';
-import '../css/Comments.css';
+import { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { postComment } from '../util/api.js';
+import { scrollToTop } from '../util/scroll-to-top.js';
+import { UserContext } from '../context/User.jsx';
+import '../css/CommentsAdd.css';
 
-export default function CommentsAdd({ article_id }) {
+export default function CommentsAdd({ article_id, optimisticComments, setOptimisticComments, totalComments, setTotalComments, isLoading }) {
+    const { userDetails, isUserLoggedIn } = useContext(UserContext);
+	const [comment, setComment] = useState('');
+    const [warning, setWarning] = useState('');
+	const textarea = document.getElementById('comment-body');
+    const button = document.getElementById('comment-submit-btn');
+    const [isError, setIsError] = useState(false);
 
+	async function handleSubmit(event) {
+		event.preventDefault();
 
-	return (
-		<form className="comments-add">
-			<p>add a comment will go here</p>
+        if (comment.length === 0) {
+            textarea.classList.add('invalid');
+            setWarning('Cannot be blank!');
+        }
+        else if (comment.length > 300) {
+            textarea.classList.add('invalid');
+            setWarning('Cannot exceed 300 chars!');
+        }
+        else {
+            button.disabled = true;
+            textarea.disabled = true;
+            textarea.classList.remove('invalid');
+            setWarning('');
+
+            try {
+                const { comment: newComment } = await postComment(article_id, userDetails.username, comment);
+
+                optimisticComments.pop()
+                optimisticComments.unshift(newComment);
+                setOptimisticComments(optimisticComments);
+                setTotalComments(totalComments + 1);
+            }
+            catch {
+                setIsError(true);
+            }
+
+            setTimeout(() => {
+                setComment('');
+                button.disabled = false;
+                textarea.disabled = false; 
+            }, 1000);
+        }
+	}
+
+    if (isError) {
+        return <div className="error">Unable to post comment</div>;
+    }
+	else return (
+		<form className="comments-add" onSubmit={event => handleSubmit(event)}>
+			<label htmlFor="comment-body">
+				Comment:
+			</label>
+			<textarea
+				id="comment-body"
+				placeholder={
+					isUserLoggedIn ?
+						(!totalComments && !isLoading ? 'Be the first to leave a comment!' : 'Leave a comment')
+						: ''
+				}
+				value={comment}
+				onChange={event => setComment(event.target.value)}
+				disabled={!isUserLoggedIn}
+			/>
+
+            <div className={`comment-overlay ${isUserLoggedIn ? 'hidden' : ''}`}>
+                Please&nbsp;<Link to="#" onClick={scrollToTop}>sign in</Link>&nbsp;to comment
+            </div>
+
+			<p className={`warning ${!warning ? 'hidden' : ''}`}>
+				{warning}
+			</p>
+
+			<button
+				type="submit"
+                id="comment-submit-btn"
+				className="submit-btn"
+				disabled={!isUserLoggedIn}
+			>
+				Comment
+			</button>
 		</form>
 	)
 }

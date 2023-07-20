@@ -1,14 +1,4 @@
-header > button.login-btn {
-    font-size: 0.9em;
-    padding: 0.4em 0.6em;
-    background-color: var(--login-btn-bg);
-    border: none;
-    border-radius: 1em;
-    cursor: pointer;
-}
-header > button.login-btn:hover {
-    background-color: var(--login-btn-bg-hover);
-}
+/* button styling in App.css */
 
 header > a.profile-link > img {
     height: 2em;
