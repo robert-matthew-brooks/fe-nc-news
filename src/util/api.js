@@ -28,3 +28,8 @@ export async function patchVotes(url, inc_votes) {
     const response = await api.patch(url, { inc_votes });
     return response.data;
 }
+
+export async function postComment(article_id, username, body) {
+    const response = await api.post(`/articles/${article_id}/comments`, { username, body });
+    return response.data;
+}

@@ -1,0 +1,71 @@
+:root {
+    --textarea-height: 7em;
+}
+
+.comments-add {
+    position: relative;
+    margin-bottom: 2em;
+}
+
+.comments-add > label {
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.comments-add > textarea {
+    width: 100%;
+    height: var(--textarea-height);
+    resize: vertical;
+    padding: 0.3em;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: var(--primary-bg-weak);
+    border: 1px solid var(--border-medium);
+    border-radius: 0.3em;
+}
+.comments-add > textarea:disabled {
+    border-color: var(--border-weak);
+}
+
+.comments-add > textarea:focus {
+    border-width: 2px;
+    border-color: var(--border-strong);
+    outline: none;
+}
+.comments-add > textarea.invalid {
+    border-color: var(--warning-border);
+}
+
+.comments-add > div.comment-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: var(--textarea-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text-weak);
+}
+.comments-add > div.comment-overlay > a {
+    color: var(--primary-href);
+}
+.comments-add > div.comment-overlay > a:hover {
+    color: var(--primary-href-hover);
+}
+
+/* button styling in App.css */
+
+.comments-add > button[type=submit] {
+    display: block;
+    margin-left: auto;
+}
+
+.comments-add > p.warning {
+    float: left;
+    margin: 0;
+    padding: 0.3em;
+    font-size: 0.9em;
+    color: var(--warning-text);
+    background-color: var(--warning-bg);
+}

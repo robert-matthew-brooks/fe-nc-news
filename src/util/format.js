@@ -36,9 +36,10 @@ export function getTimeAgo(dateStr) {
     if (deltaYears > 0) period = 'year', value = deltaYears;
     else if (deltaMonths > 0) period = 'month', value = deltaMonths;
     else if (deltaWeeks > 0) period = 'week', value = deltaWeeks;
-    else if (deltaDays > 0) period = 'days', value = deltaDays;
-    else if (deltaHours > 0) period = 'hours', value = deltaHours;
-    else if (deltaMinutes > 0) period = 'minutes', value = deltaMinutes;
+    else if (deltaDays > 0) period = 'day', value = deltaDays;
+    else if (deltaHours > 0) period = 'hour', value = deltaHours;
+    else if (deltaMinutes > 0) period = 'minute', value = deltaMinutes;
+    else if (deltaSeconds < 3) return 'Just now';
     else period = 'second', value = deltaSeconds;
 
     return `${value} ${period}${value === 1 ? '' : 's'} ago`;
