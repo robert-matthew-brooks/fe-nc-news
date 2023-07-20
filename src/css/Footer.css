@@ -1,5 +1,9 @@
+:root {
+    --footer-height: 6em;
+}
+
 footer {
-    z-index: 1;
+    height: var(--footer-height);
     display: flex;
     justify-content: center;
     align-items: center;
