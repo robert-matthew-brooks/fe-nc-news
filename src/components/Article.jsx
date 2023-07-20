@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { fetchArticle, fetchUser } from '../util/api.js';
 import { getFormattedDate } from '../util/format.js';
 import { scrollToTop } from '../util/scroll-to-top.js';
@@ -11,6 +11,7 @@ import '../css/Article.css';
 
 export default function Articles() {
     const { article_id } = useParams();
+    const { hash } = useLocation();
     const [article, setArticle] = useState({});
     const [avatarUrl, setAvatarUrl] = useState();
     const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,8 @@ export default function Articles() {
             }
             
             setIsLoading(false);
+            if (hash === '#votes') document.getElementById('votes').scrollIntoView({ block: 'center' });
+            else if (hash === '#comments') document.getElementById('comments').scrollIntoView({ block: 'start' });
         })()
     }, [article_id]);
 
@@ -70,12 +73,15 @@ export default function Articles() {
                     votes={article.votes}
                     patchUrl={`/articles/${article_id}`}
                 />
+                <a id="votes" className="anchor"></a>
+                
 
                 <div className={isLoading ? 'loading' : 'hidden'}>
                     <img src={LoadingImg} alt="loading" />
                 </div>
             </article>
 
+            <a id="comments" className="anchor"></a>
             <Comments article_id={article_id} />
         </main>
     );

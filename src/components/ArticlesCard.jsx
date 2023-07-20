@@ -14,12 +14,23 @@ export default function ArticlesCard({ article_id, article_img_url, title, autho
             <Link to={{ pathname: `/articles/${article_id}` }}>
                 <h3>{title}</h3>
                 <img src={article_img_url} alt={title}/>
-                <p className="comments-and-votes">
-                    {comment_count} {comment_count === 1 ? 'comment' : 'comments'}
-                    &nbsp;-&nbsp;
-                    {votes} {votes === 1 ? 'vote' : 'votes'}
-                </p>
             </Link>
+
+            <p className="comments-and-votes">
+                <Link to={{
+                    pathname: `/articles/${article_id}`,
+                    hash: '#comments'
+                }}>
+                    {comment_count} {comment_count === 1 ? 'comment' : 'comments'}
+                </Link>
+                &nbsp;-&nbsp;
+                <Link to={{
+                    pathname: `/articles/${article_id}`,
+                    hash: '#votes'
+                }}>
+                    {votes} {votes === 1 ? 'vote' : 'votes'}
+                </Link>
+            </p>
         </article>
     );
 }
