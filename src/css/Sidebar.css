@@ -8,6 +8,7 @@
     min-height: calc(100vh - var(--header-height));
     display: none;
     width: var(--sidebar-width);
+    margin-bottom: calc(var(--footer-height) + 1em);
     background-color: var(--primary-bg);
 }
 
