@@ -3,7 +3,7 @@ import '../css/SidebarCard.css';
 
 export default function SidebarCard({ article_id, title, article_img_url, comment_count, i }) {
     return (
-        <Link to={{ pathname: `/articles/${article_id}`}}>
+        <Link to={{ pathname: `/articles/${article_id}`}} tabIndex={-1}>
             <article
                 className="sidebar-card"
                 style={{backgroundImage: `url(${article_img_url})`}}
