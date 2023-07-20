@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom';
 import { fetchArticles } from '../util/api.js';
+import { capitalise } from '../util/format.js';
+import { scrollToTop } from '../util/scroll-to-top.js';
 import Title from './Title.jsx';
 import ArticlesSort from './ArticlesSort.jsx';
 import ArticlesCard from './ArticlesCard';
@@ -8,6 +11,7 @@ import LoadingImg from '../img/loading.png';
 import '../css/Articles.css';
 
 export default function Articles() {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [articles, setArticles] = useState([]);
     const [totalArticles, setTotalArticles] = useState(0);
     const [articlesPerPage, setArticlesPerPage] = useState(10);
@@ -17,10 +21,14 @@ export default function Articles() {
 
     useEffect(() => {
         (async () => {
+            scrollToTop();
             setIsLoading(true);
 
             try {
-                const { articles, total_count } = await fetchArticles({ p: currentPage });
+                const { articles, total_count } = await fetchArticles({
+                    topic: searchParams.get('topic'),
+                    p: currentPage
+                });
                 setArticles(articles);
                 setTotalArticles(total_count);
             }
@@ -30,14 +38,14 @@ export default function Articles() {
 
             setIsLoading(false);
         })();
-    }, [currentPage]);
+    }, [currentPage, searchParams]);
 
     if (isError) {
         return <div className="error">Unable to load articles</div>;
     }
     else return (
         <main className="articles">
-            <Title title="Articles" />
+            <Title title={`${capitalise(searchParams.get('topic') || 'all')} Articles`} />
 
             <ArticlesSort />
 
