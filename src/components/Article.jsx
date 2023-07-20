@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { fetchArticle, fetchUser } from '../util/api.js';
 import { getFormattedDate } from '../util/format.js';
+import { scrollToTop } from '../util/scroll-to-top.js';
 import Title from './Title.jsx';
 import Votes from './Votes.jsx';
 import Comments from './Comments.jsx';
@@ -17,6 +18,7 @@ export default function Articles() {
 
     useEffect(() => {
         (async () => {
+            scrollToTop();
             setIsLoading(true);
 
             try {

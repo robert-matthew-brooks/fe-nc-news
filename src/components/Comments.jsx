@@ -8,7 +8,6 @@ import '../css/Comments.css';
 
 export default function Comments({ article_id }) {
     const [comments, setComments] = useState([]);
-    const [optimisticComments, setOptimisticComments] = useState([]);
 	const [totalComments, setTotalComments] = useState(0);
 	const [limit, setLimit] = useState(10);
 	const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +20,6 @@ export default function Comments({ article_id }) {
 			try {
 				const { comments, total_count } = await fetchComments(article_id, { limit });
 				setComments(comments);
-                setOptimisticComments(comments)
 				setTotalComments(total_count);
 			}
 			catch {
@@ -41,15 +39,15 @@ export default function Comments({ article_id }) {
 
             <CommentsAdd
                 article_id={article_id}
-                optimisticComments = {optimisticComments}
-                setOptimisticComments = {setOptimisticComments}
+                comments = {comments}
+                setComments = {setComments}
                 totalComments={totalComments}
                 setTotalComments={setTotalComments}
                 isLoading={isLoading}
             />
 			
 			<section className="comments-list">
-				{optimisticComments.map(comment => {
+				{comments.map(comment => {
 					return <CommentsCard
 						key={comment.comment_id}
 						comment_id={comment.comment_id}
@@ -61,7 +59,11 @@ export default function Comments({ article_id }) {
 				})}
 			</section>
 			
-			<CommentsNav displayedComments={optimisticComments.length} totalComments={totalComments} limit={limit} setLimit={setLimit} isLoading={isLoading} />
+			<CommentsNav
+                displayedComments={comments.length}
+                totalComments={totalComments} limit={limit}
+                setLimit={setLimit} isLoading={isLoading}
+            />
 
 			<div className={isLoading ? 'loading' : 'hidden'}>
                 <img src={LoadingImg} alt="loading" />
