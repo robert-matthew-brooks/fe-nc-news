@@ -11,7 +11,7 @@ const sortByOptions = [
 
 export default function ArticlesSort({ sortBy: sortByFromURL, addSortByToURL, sortOrder: sortOrderFromURL, addSortOrderToURL }) {
     const [sortBy, setSortBy] = useState(sortByFromURL);
-    const [sortOrder, setSortOrder] = useState(sortOrderFromURL);
+    const [sortOrder, setSortOrder] = useState(sortOrderFromURL || 'desc');
 
     const changeSortBy = event => {
         setSortBy(event.target.value);
