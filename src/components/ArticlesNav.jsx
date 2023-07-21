@@ -1,6 +1,7 @@
 import '../css/ArticlesNav.css';
 
 export default function ArticlesNav({ currentPage, setCurrentPage, totalArticles, articlesPerPage }) {
+    if (!currentPage) currentPage = 1;
     const totalPages = Math.ceil(totalArticles / articlesPerPage);
 
     const pageNumbers = [];
