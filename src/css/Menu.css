@@ -61,6 +61,14 @@ nav > a:hover {
     background-color: var(--secondary-bg);
 }
 
+nav > hr {
+    width: 80%;
+    height: 0;
+    margin: 1.2em auto;
+    border: none;
+    border-top: 1px solid var(--border-weak);
+}
+
 @media (min-width: 1366px) {
     .menu-overlay {
         display: none;
