@@ -7,7 +7,7 @@ import Articles from './Articles.jsx';
 import Article from './Article.jsx';
 import Sidebar from './Sidebar.jsx';
 import Footer from './Footer.jsx';
-
+import ErrorMain from './ErrorMain.jsx';
 import '../css/App.css';
 
 export default function App() {
@@ -22,6 +22,7 @@ export default function App() {
 				<Route path="/" element={<Homepage />} />
 				<Route path="/articles" element={<Articles />} />
 				<Route path="/articles/:article_id" element={<Article />} />
+				<Route path="*" element={<ErrorMain />} />
 			</Routes>
 
 			<Sidebar />
