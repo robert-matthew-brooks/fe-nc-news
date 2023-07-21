@@ -51,7 +51,7 @@ export default function Articles() {
 
             try {
                 const { articles, total_count } = await fetchArticles(queries);
->>>>>>>>> Temporary merge branch 2
+
                 setArticles(articles);
                 setTotalArticles(total_count);
             }
