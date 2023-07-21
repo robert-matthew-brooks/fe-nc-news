@@ -68,7 +68,3 @@ export function getFormattedNumber(number) {
 
     return `${sign}${thousands}.${hundreds}k`;
 }
-
-export function capitalise(string) {
-    return string[0].toUpperCase() + string.slice(1).toLowerCase();
-}
