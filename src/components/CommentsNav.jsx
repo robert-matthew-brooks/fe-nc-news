@@ -1,6 +1,6 @@
 import '../css/CommentsNav.css';
 
-export default function CommentsNav({ displayedComments, totalComments, page, setPage, isLoading }) {
+export default function CommentsNav({ displayedComments, totalComments, page = 1, setPage, isLoading }) {
     if (displayedComments) {
         return (
             <section className="comments-nav">
