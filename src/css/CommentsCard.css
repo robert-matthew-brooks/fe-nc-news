@@ -4,7 +4,8 @@
     grid-template-columns: 1fr min-content;
     grid-template-areas:
         "details vote"
-        "body body";
+        "body body"
+        "delete delete";
 }
 
 .comments-card > p {
@@ -43,6 +44,7 @@
 
 .comments-card > p.comment-body {
     grid-area: body;
+    position: relative;
     line-height: 1.6em;
     background-color: var(--primary-bg-weak);
 }

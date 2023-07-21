@@ -8,18 +8,28 @@ import '../css/Comments.css';
 
 export default function Comments({ article_id }) {
     const [comments, setComments] = useState([]);
-	const [totalComments, setTotalComments] = useState(0);
-	const [limit, setLimit] = useState(10);
+	const [totalComments, setTotalComments] = useState();
+	const limit = 10;
+	const [page, setPage] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
+
+	useEffect(() => {
+		setComments([]);
+		setTotalComments(0);
+		setPage();
+	}, [article_id]);
 
 	useEffect(() => {
         (async () => {
             setIsLoading(true);
 
+            const queries = {};
+            if (page) queries.p = page;
+
 			try {
-				const { comments, total_count } = await fetchComments(article_id, { limit });
-				setComments(comments);
+				const { comments: fetchedComments, total_count } = await fetchComments(article_id, queries);
+				setComments([...comments, ...fetchedComments]);
 				setTotalComments(total_count);
 			}
 			catch {
@@ -28,7 +38,7 @@ export default function Comments({ article_id }) {
 
             setIsLoading(false);
         })();
-    }, [limit, article_id]);
+    }, [page]);
 
 	if (isError) {
         return <div className="error">Unable to load comments</div>;
@@ -61,8 +71,10 @@ export default function Comments({ article_id }) {
 			
 			<CommentsNav
                 displayedComments={comments.length}
-                totalComments={totalComments} limit={limit}
-                setLimit={setLimit} isLoading={isLoading}
+                totalComments={totalComments}
+				page={page}
+                setPage={setPage}
+				isLoading={isLoading}
             />
 
 			<div className={isLoading ? 'loading' : 'hidden'}>

@@ -1,6 +1,6 @@
 import '../css/CommentsNav.css';
 
-export default function CommentsNav({ displayedComments, totalComments, limit, setLimit, isLoading }) {
+export default function CommentsNav({ displayedComments, totalComments, page, setPage, isLoading }) {
     if (displayedComments) {
         return (
             <section className="comments-nav">
@@ -8,7 +8,7 @@ export default function CommentsNav({ displayedComments, totalComments, limit, s
                     Comments <span>1 - {displayedComments}</span> of <span>{totalComments}</span>
                 </p>
                 <button
-                    onClick={() => setLimit(limit + 10)}
+                    onClick={() => setPage(page + 1)}
                     className={displayedComments === totalComments ? 'hidden' : ''}
                     disabled={isLoading}
                 >

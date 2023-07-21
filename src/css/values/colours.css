@@ -21,6 +21,10 @@
     --submit-btn-bg: #33b249;
     --submit-btn-bg-hover: #47d247;
 
+    --delete-btn-bg: #ffc0c0;
+    --delete-btn-bg-hover: #ff8080;
+    --delete-btn-border: #a00000;
+
     --votes-negative: #800000;
     --votes-up-bg: #80ff80;
     --votes-down-bg: #ffa0a0;
