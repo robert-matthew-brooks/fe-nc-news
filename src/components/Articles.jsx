@@ -19,21 +19,21 @@ export default function Articles() {
     const sortBy = searchParams.get("sort_by");
     const sortOrder = searchParams.get("order");
 
-    const changePage = page => {
+    const addPageToURL = page => {
         setSearchParams(params => {
         params.set("p", page);
             return params;
         });
     };
 
-    const changeSortBy = sortBy => {
+    const addSortByToURL = sortBy => {
         setSearchParams(params => {
             params.set("sort_by", sortBy);
             return params;
         });
     };
 
-    const changeSortOrder = sortOrder => {
+    const addSortOrderToURL = sortOrder => {
         setSearchParams(params => {
             params.set("order", sortOrder);
             return params;
@@ -71,9 +71,10 @@ export default function Articles() {
             <Title title="Articles" />
 
             <ArticlesSort
-                changeSortBy={changeSortBy}
+                sortBy={sortBy}
+                addSortByToURL={addSortByToURL}
                 sortOrder={sortOrder}
-                changeSortOrder={changeSortOrder}
+                addSortOrderToURL={addSortOrderToURL}
             />
 
             <section className="articles-list">
@@ -93,7 +94,7 @@ export default function Articles() {
 
             <ArticlesNav
                 page={page}
-                changePage={changePage}
+                changePage={addPageToURL}
                 articlesPerPage={articlesPerPage}
                 totalArticles={totalArticles}
                 isLoading={isLoading}

@@ -1,5 +1,5 @@
-import SortDescImg from '../img/sort-desc.svg';
 import { useState } from 'react';
+import SortDescImg from '../img/sort-desc.svg';
 import SortAscImg from '../img/sort-asc.svg';
 import '../css/ArticlesSort.css';
 
@@ -9,22 +9,23 @@ const sortByOptions = [
     {text: 'Votes', value: 'votes'}
 ];
 
+export default function ArticlesSort({ sortBy: sortByFromURL, addSortByToURL, sortOrder: sortOrderFromURL, addSortOrderToURL }) {
+    const [sortBy, setSortBy] = useState(sortByFromURL);
+    const [sortOrder, setSortOrder] = useState(sortOrderFromURL);
 
-export default function ArticlesSort({ changeSortBy, changeSortOrder }) {
-    const [isAsc, setIsAsc] = useState(false)
-
+    const changeSortBy = event => {
+        setSortBy(event.target.value);
+        addSortByToURL(event.target.value)
+    }
+    
     const toggleSortOrder = () => {
-        const sortImg = document.getElementById('sort-order').children[0];
-
-        if (isAsc) {
-            changeSortOrder('desc');
-            setIsAsc(false);
-            sortImg.src = SortDescImg;
+        if (sortOrder === 'asc') {
+            setSortOrder('desc');
+            addSortOrderToURL('desc');
         }
         else {
-            changeSortOrder('asc');
-            setIsAsc(true);
-            sortImg.src = SortAscImg;
+            setSortOrder('asc');
+            addSortOrderToURL('asc');
         }
     };
 
@@ -34,7 +35,11 @@ export default function ArticlesSort({ changeSortBy, changeSortOrder }) {
                 <label htmlFor="sort-by">
                     Sort by:
                 </label>
-                <select id="sort-by" onChange={event => changeSortBy(event.target.value)}>
+                <select
+                    id="sort-by"
+                    onChange={event => changeSortBy(event)}
+                    value={sortBy}
+                >
                     {sortByOptions.map(sortByOption => {
                         return (
                             <option
@@ -50,7 +55,13 @@ export default function ArticlesSort({ changeSortBy, changeSortOrder }) {
                     Ascending/descending:
                 </label>
                 <button id="sort-order" type="button" onClick={toggleSortOrder}>
-                    <img src={SortDescImg} alt="ascending/descending" />
+                    <img
+                        src={
+                            [SortDescImg, SortAscImg][
+                                ['desc', 'asc'].indexOf(sortOrder)
+                            ]
+                        }
+                        alt="ascending/descending" />
                 </button>
             </form>
         </section>
