@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { fetchArticles } from '../util/api.js';
+import { capitalise } from '../util/format.js';
+import { scrollToTop } from '../util/scroll-to-top.js';
 import Title from './Title.jsx';
 import ArticlesSort from './ArticlesSort.jsx';
 import ArticlesCard from './ArticlesCard';
@@ -42,6 +44,7 @@ export default function Articles() {
 
     useEffect(() => {
         (async () => {
+            scrollToTop();
             setIsLoading(true);
 
             const queries = {};
@@ -51,6 +54,7 @@ export default function Articles() {
 
             try {
                 const { articles, total_count } = await fetchArticles(queries);
+
                 setArticles(articles);
                 setTotalArticles(total_count);
             }
@@ -67,7 +71,7 @@ export default function Articles() {
     }
     else return (
         <main className="articles">
-            <Title title="Articles" />
+            <Title title={`${capitalise(searchParams.get('topic') || 'all')} Articles`} />
 
             <ArticlesSort
                 changeSortBy={changeSortBy}

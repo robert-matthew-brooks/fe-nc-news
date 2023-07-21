@@ -4,6 +4,11 @@ const api = axios.create({
     baseURL: 'https://be-nc-news-nvms.onrender.com/api'
 });
 
+export async function fetchTopics() {
+    const response = await api.get('/topics');
+    return response.data;
+}
+
 export async function fetchArticles(params) {
     const response = await api.get('/articles', { params });
     return response.data;
