@@ -33,3 +33,8 @@ export async function postComment(article_id, username, body) {
     const response = await api.post(`/articles/${article_id}/comments`, { username, body });
     return response.data;
 }
+
+export async function deleteComment(comment_id) {
+    const response = await api.delete(`/comments/${comment_id}`);
+    return response.data;
+}

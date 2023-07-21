@@ -1,10 +1,12 @@
 .comments-card {
+    position: relative;
     display: grid;
     grid-template-rows: 1fr min-content;
     grid-template-columns: 1fr min-content;
     grid-template-areas:
         "details vote"
-        "body body";
+        "body body"
+        "delete delete";
 }
 
 .comments-card > p {
@@ -43,6 +45,18 @@
 
 .comments-card > p.comment-body {
     grid-area: body;
+    position: relative;
     line-height: 1.6em;
     background-color: var(--primary-bg-weak);
+}
+
+.deleted-comment {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text-weak);
+    background-color: var(--removed-bg);
 }
