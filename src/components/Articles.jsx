@@ -17,6 +17,18 @@ export default function Articles() {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
+    const changeCurrentPage = currentPage => {
+        setCurrentPage(currentPage);
+    };
+
+    const changeSortBy = sortBy => {
+        setSortBy(sortBy);
+    };
+
+    const changeSortOrder = sortOrder => {
+        setSortOrder(sortOrder);
+    };
+
     useEffect(() => {
         (async () => {
             setIsLoading(true);
@@ -47,9 +59,9 @@ export default function Articles() {
             <Title title="Articles" />
 
             <ArticlesSort
-                setSortBy={setSortBy}
+                changeSortBy={changeSortBy}
                 sortOrder={sortOrder}
-                setSortOrder={setSortOrder}
+                changeSortOrder={changeSortOrder}
             />
 
             <section className="articles-list">
@@ -69,7 +81,7 @@ export default function Articles() {
 
             <ArticlesNav
                 currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
+                changeCurrentPage={changeCurrentPage}
                 articlesPerPage={articlesPerPage}
                 totalArticles={totalArticles}
                 isLoading={isLoading}

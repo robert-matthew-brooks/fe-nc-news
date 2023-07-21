@@ -9,17 +9,17 @@ const sortByOptions = [
 ];
 
 
-export default function ArticlesSort({ setSortBy, sortOrder, setSortOrder }) {
+export default function ArticlesSort({ changeSortBy, sortOrder, changeSortOrder }) {
     
     const toggleSortOrder = () => {
         const sortImg = document.getElementById('sort-order').children[0];
 
         if (sortOrder === 'asc') {
-            setSortOrder('desc');
+            changeSortOrder('desc');
             sortImg.src = SortDescImg;
         }
         else {
-            setSortOrder('asc');
+            changeSortOrder('asc');
             sortImg.src = SortAscImg;
         }
 
@@ -32,7 +32,7 @@ export default function ArticlesSort({ setSortBy, sortOrder, setSortOrder }) {
                 <label htmlFor="sort-by">
                     Sort by:
                 </label>
-                <select id="sort-by" onChange={event => setSortBy(event.target.value)}>
+                <select id="sort-by" onChange={event => changeSortBy(event.target.value)}>
                     {sortByOptions.map(sortByOption => {
                         return (
                             <option

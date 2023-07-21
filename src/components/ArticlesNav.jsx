@@ -1,6 +1,6 @@
 import '../css/ArticlesNav.css';
 
-export default function ArticlesNav({ currentPage, setCurrentPage, totalArticles, articlesPerPage }) {
+export default function ArticlesNav({ currentPage, changeCurrentPage, totalArticles, articlesPerPage }) {
     if (!currentPage) currentPage = 1;
     const totalPages = Math.ceil(totalArticles / articlesPerPage);
 
@@ -17,7 +17,7 @@ export default function ArticlesNav({ currentPage, setCurrentPage, totalArticles
     return (
         <section className="articles-nav">
             <button
-                onClick={() => setCurrentPage(currentPage - 1)}
+                onClick={() => changeCurrentPage(currentPage - 1)}
                 disabled={currentPage === 1}
             >
                 &lt;
@@ -27,7 +27,7 @@ export default function ArticlesNav({ currentPage, setCurrentPage, totalArticles
                 return (
                     <button
                         key={pageNumber}
-                        onClick={() => setCurrentPage(pageNumber)}
+                        onClick={() => changeCurrentPage(pageNumber)}
                         disabled={pageNumber === currentPage}
                     >
                         {pageNumber}
@@ -36,7 +36,7 @@ export default function ArticlesNav({ currentPage, setCurrentPage, totalArticles
             })}
 
             <button
-                onClick={() => setCurrentPage(currentPage + 1)}
+                onClick={() => changeCurrentPage(currentPage + 1)}
                 disabled={(currentPage === totalPages) || (totalPages === 0)}
             >
                 &gt;
