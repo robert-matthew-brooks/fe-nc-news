@@ -11,7 +11,9 @@ export default function Articles() {
     const [articles, setArticles] = useState([]);
     const [totalArticles, setTotalArticles] = useState(0);
     const [articlesPerPage, setArticlesPerPage] = useState(10);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(null);
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
@@ -19,8 +21,13 @@ export default function Articles() {
         (async () => {
             setIsLoading(true);
 
+            const queries = {};
+            if (currentPage) queries.p = currentPage;
+            if (sortBy) queries.sort_by = sortBy;
+            if (sortOrder) queries.order = sortOrder;
+
             try {
-                const { articles, total_count } = await fetchArticles({ p: currentPage });
+                const { articles, total_count } = await fetchArticles(queries);
                 setArticles(articles);
                 setTotalArticles(total_count);
             }
@@ -30,7 +37,7 @@ export default function Articles() {
 
             setIsLoading(false);
         })();
-    }, [currentPage]);
+    }, [currentPage, sortBy, sortOrder]);
 
     if (isError) {
         return <div className="error">Unable to load articles</div>;
@@ -39,7 +46,11 @@ export default function Articles() {
         <main className="articles">
             <Title title="Articles" />
 
-            <ArticlesSort />
+            <ArticlesSort
+                setSortBy={setSortBy}
+                sortOrder={sortOrder}
+                setSortOrder={setSortOrder}
+            />
 
             <section className="articles-list">
                 {articles.map(article => {
