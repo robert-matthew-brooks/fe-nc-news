@@ -1,24 +1,24 @@
 import '../css/ArticlesNav.css';
 
-export default function ArticlesNav({ currentPage, changeCurrentPage, totalArticles, articlesPerPage }) {
-    if (!currentPage) currentPage = 1;
+export default function ArticlesNav({ page, changePage, totalArticles, articlesPerPage }) {
+    page = Number(page ? page : 1);
     const totalPages = Math.ceil(totalArticles / articlesPerPage);
 
     const pageNumbers = [];
     for (let i=1; i<=totalPages; i++) pageNumbers.push(i);
 
     const to = totalArticles > 0 ?
-        1 + (articlesPerPage * (currentPage-1)) : 0;
+        1 + (articlesPerPage * (page-1)) : 0;
     const from = Math.min(
-        1 + (articlesPerPage * (currentPage)),
+        1 + (articlesPerPage * (page)),
         totalArticles
     );
 
     return (
         <section className="articles-nav">
             <button
-                onClick={() => changeCurrentPage(currentPage - 1)}
-                disabled={currentPage === 1}
+                onClick={() => changePage(page - 1)}
+                disabled={page === 1}
             >
                 &lt;
             </button>
@@ -27,8 +27,8 @@ export default function ArticlesNav({ currentPage, changeCurrentPage, totalArtic
                 return (
                     <button
                         key={pageNumber}
-                        onClick={() => changeCurrentPage(pageNumber)}
-                        disabled={pageNumber === currentPage}
+                        onClick={() => changePage(pageNumber)}
+                        disabled={pageNumber === page}
                     >
                         {pageNumber}
                     </button>
@@ -36,8 +36,8 @@ export default function ArticlesNav({ currentPage, changeCurrentPage, totalArtic
             })}
 
             <button
-                onClick={() => changeCurrentPage(currentPage + 1)}
-                disabled={(currentPage === totalPages) || (totalPages === 0)}
+                onClick={() => changePage(page + 1)}
+                disabled={(page === totalPages) || (totalPages === 0)}
             >
                 &gt;
             </button>

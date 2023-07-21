@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom';
 import { fetchArticles } from '../util/api.js';
 import Title from './Title.jsx';
 import ArticlesSort from './ArticlesSort.jsx';
@@ -8,25 +9,35 @@ import LoadingImg from '../img/loading.png';
 import '../css/Articles.css';
 
 export default function Articles() {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [articles, setArticles] = useState([]);
     const [totalArticles, setTotalArticles] = useState(0);
-    const [articlesPerPage, setArticlesPerPage] = useState(10);
-    const [currentPage, setCurrentPage] = useState(null);
-    const [sortBy, setSortBy] = useState(null);
-    const [sortOrder, setSortOrder] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
+    const articlesPerPage = 10;
+    const page = searchParams.get("p");
+    const sortBy = searchParams.get("sort_by");
+    const sortOrder = searchParams.get("order");
 
-    const changeCurrentPage = currentPage => {
-        setCurrentPage(currentPage);
+    const changePage = page => {
+        setSearchParams(params => {
+        params.set("p", page);
+            return params;
+        });
     };
 
     const changeSortBy = sortBy => {
-        setSortBy(sortBy);
+        setSearchParams(params => {
+            params.set("sort_by", sortBy);
+            return params;
+        });
     };
 
     const changeSortOrder = sortOrder => {
-        setSortOrder(sortOrder);
+        setSearchParams(params => {
+            params.set("order", sortOrder);
+            return params;
+        });
     };
 
     useEffect(() => {
@@ -34,7 +45,7 @@ export default function Articles() {
             setIsLoading(true);
 
             const queries = {};
-            if (currentPage) queries.p = currentPage;
+            if (page) queries.p = page;
             if (sortBy) queries.sort_by = sortBy;
             if (sortOrder) queries.order = sortOrder;
 
@@ -49,7 +60,7 @@ export default function Articles() {
 
             setIsLoading(false);
         })();
-    }, [currentPage, sortBy, sortOrder]);
+    }, [searchParams]);
 
     if (isError) {
         return <div className="error">Unable to load articles</div>;
@@ -80,8 +91,8 @@ export default function Articles() {
             </section>
 
             <ArticlesNav
-                currentPage={currentPage}
-                changeCurrentPage={changeCurrentPage}
+                page={page}
+                changePage={changePage}
                 articlesPerPage={articlesPerPage}
                 totalArticles={totalArticles}
                 isLoading={isLoading}

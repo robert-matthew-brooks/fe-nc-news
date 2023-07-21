@@ -1,4 +1,5 @@
 import SortDescImg from '../img/sort-desc.svg';
+import { useState } from 'react';
 import SortAscImg from '../img/sort-asc.svg';
 import '../css/ArticlesSort.css';
 
@@ -9,21 +10,22 @@ const sortByOptions = [
 ];
 
 
-export default function ArticlesSort({ changeSortBy, sortOrder, changeSortOrder }) {
-    
+export default function ArticlesSort({ changeSortBy, changeSortOrder }) {
+    const [isAsc, setIsAsc] = useState(false)
+
     const toggleSortOrder = () => {
         const sortImg = document.getElementById('sort-order').children[0];
 
-        if (sortOrder === 'asc') {
+        if (isAsc) {
             changeSortOrder('desc');
+            setIsAsc(false);
             sortImg.src = SortDescImg;
         }
         else {
             changeSortOrder('asc');
+            setIsAsc(true);
             sortImg.src = SortAscImg;
         }
-
-        console.log();
     };
 
     return (
