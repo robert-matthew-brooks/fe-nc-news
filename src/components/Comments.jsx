@@ -57,17 +57,18 @@ export default function Comments({ article_id }) {
 
             <CommentsAdd
                 article_id={article_id}
-                comments = {comments}
                 setComments = {setComments}
                 totalComments={totalComments}
                 setTotalComments={setTotalComments}
                 isLoading={isLoading}
+                comments = {comments}
             />
             
             <section className="comments-list">
                 {comments.map(comment => {
                     return <CommentsCard
                         key={comment.comment_id}
+                        comments={comments}
                         comment_id={comment.comment_id}
                         author={comment.author}
                         created_at={comment.created_at}
