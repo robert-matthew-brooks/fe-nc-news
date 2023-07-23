@@ -18,7 +18,7 @@ export default function CommentsAdd({ article_id, comments, setComments, totalCo
         if (textarea) textarea.classList.remove('invalid');
     }, [article_id]);
 
-	async function handleSubmit(event) {
+	const submitComment = async event => {
 		event.preventDefault();
 
         if (comment.length === 0) {
@@ -58,7 +58,7 @@ export default function CommentsAdd({ article_id, comments, setComments, totalCo
 	}
 
     return (
-		<form className="comments-add" onSubmit={event => handleSubmit(event)}>
+		<form className="comments-add" onSubmit={event => submitComment(event)}>
 			<label htmlFor="comment-body">
 				Comment:
 			</label>

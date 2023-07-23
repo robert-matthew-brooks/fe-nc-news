@@ -30,7 +30,7 @@ export default function Comments({ article_id }) {
     }
 
     useEffect(() => {
-        (async() => {
+        (async () => {
             setIsLoading(true);
             setPage();
             await addCommentBatch(false);

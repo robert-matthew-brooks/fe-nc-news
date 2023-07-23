@@ -13,7 +13,7 @@ export default function HeaderLogin() {
     } = useContext(UserContext);
     const [isError, setIsError] = useState(false);
 
-    async function login(event) {
+    const login = async event => {
         event.target.disabled = true;
 
         try {

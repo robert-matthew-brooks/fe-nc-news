@@ -8,6 +8,7 @@ import ArticlesCard from './ArticlesCard';
 import ArticlesNav from './ArticlesNav.jsx';
 import Loading from './Loading.jsx';
 import '../css/Articles.css';
+import { capitalise } from '../util/format.js';
 
 export default function Articles() {
     const { topic } = useParams();
@@ -75,7 +76,7 @@ export default function Articles() {
     else return (
         <main className="articles">
             <Loading isLoading={isLoading}>
-                <Title title="Articles" />
+                <Title title={`${topic ? capitalise(topic) : 'All'} Articles`} />
 
                 <ArticlesSort
                     sortBy={sortBy}

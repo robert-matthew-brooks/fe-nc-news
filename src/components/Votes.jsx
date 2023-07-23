@@ -10,7 +10,7 @@ export default function Votes({ patchUrl, votes }) {
     const [optimisticVotes, setOptimisticVotes] = useState(0);
     const [isError, setIsError] = useState(false);
 
-    async function handleVote(type) {
+    const submitVote = async type => {
         let incVotes = 0;
 
         if (type === 'up') {
@@ -53,7 +53,7 @@ export default function Votes({ patchUrl, votes }) {
             <figure className={`votes ${optimisticVotes < 0 && 'negative'}`}>
                 <button
                     className={`up ${upVote && 'up-active'}`}
-                    onClick={() => handleVote('up')}
+                    onClick={() => submitVote('up')}
                 >
                     <img src={VoteImg} alt="vote up" />
                 </button>
@@ -64,7 +64,7 @@ export default function Votes({ patchUrl, votes }) {
 
                 <button
                     className={`down ${downVote && 'down-active'}`}
-                    onClick={() => handleVote('down')}
+                    onClick={() => submitVote('down')}
                 >
                     <img src={VoteImg} alt="vote down" />
                 </button>
