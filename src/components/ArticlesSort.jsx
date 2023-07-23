@@ -38,7 +38,7 @@ export default function ArticlesSort({ sortBy: sortByFromURL, addSortByToURL, so
                 <select
                     id="sort-by"
                     onChange={event => changeSortBy(event)}
-                    value={sortBy}
+                    value={sortBy || 'date'}
                 >
                     {sortByOptions.map(sortByOption => {
                         return (

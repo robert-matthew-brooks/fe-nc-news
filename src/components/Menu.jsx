@@ -74,8 +74,7 @@ export default function Menu({ isMenuVisible, setIsMenuVisible }) {
                     topics.map(topic => {
                         return {
                             text: capitalise(topic.slug),
-                            path: '/articles',
-                            query: `topic=${topic.slug}`
+                            path: `/topics/${topic.slug}`
                         }
                     }
                 ))}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { fetchArticles } from '../util/api.js';
 import { scrollToTop } from '../util/scroll-to-top.js';
 import Title from './Title.jsx';
@@ -10,6 +10,7 @@ import LoadingImg from '../img/loading.png';
 import '../css/Articles.css';
 
 export default function Articles() {
+    const { topic } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
     const [articles, setArticles] = useState([]);
     const [totalArticles, setTotalArticles] = useState(0);
@@ -47,6 +48,7 @@ export default function Articles() {
             scrollToTop();
 
             const queries = {};
+            if (topic) queries.topic = topic;
             if (page) queries.p = page;
             if (sortBy) queries.sort_by = sortBy;
             if (sortOrder) queries.order = sortOrder;

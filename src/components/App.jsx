@@ -21,6 +21,7 @@ export default function App() {
 			<Routes>
 				<Route path="/" element={<Homepage />} />
 				<Route path="/articles" element={<Articles />} />
+				<Route path="/topics/:topic" element={<Articles />} />
 				<Route path="/articles/:article_id" element={<Article />} />
 				<Route path="*" element={<ErrorMain />} />
 			</Routes>
