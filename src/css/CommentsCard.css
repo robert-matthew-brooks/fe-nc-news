@@ -4,9 +4,9 @@
     grid-template-rows: 1fr min-content;
     grid-template-columns: 1fr min-content;
     grid-template-areas:
-        "details vote"
+        "details options"
         "body body"
-        "delete delete";
+        "vote .";
 }
 
 .comments-card > p {
@@ -30,8 +30,9 @@
 
 .comments-card > figure {
     grid-area: vote;
+    width: fit-content;
+    padding: 0.5em;
     padding-right: 0.3em;
-    background-color: var(--secondary-bg);
 }
 
 .comments-card > figure > button {

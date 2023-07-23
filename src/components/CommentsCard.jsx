@@ -35,25 +35,26 @@ export default function CommentsCard({ commentId, author, createdAt, body, votes
     else return (
         <article className="comments-card">
             <p className="user-and-time">
-                <CommentsCardDelete
+                <Link to={{ pathname: `/users/${author}`}}>{author}</Link>
+                &nbsp;-&nbsp;
+                {getTimeAgo(createdAt)}
+            </p>
+
+            <CommentsCardDelete
                     commentId={commentId}
                     author={author}
                     deleteComment={deleteComment}
                     setIsDeleteError={setIsDeleteError}
                 />
-                <Link to={{ pathname: `/users/${author}`}}>{author}</Link>
-                &nbsp;-&nbsp;
-                {getTimeAgo(createdAt)}
+
+            <p className="comment-body">
+                {body}
             </p>
 
             <Votes
                 votes={votes}
                 patchUrl={`/comments/${commentId}`}
             />
-
-            <p className="comment-body">
-                {body}
-            </p>
 
             <div className={`deleted-comment ${!isDeleted && 'hidden'}`}>Comment deleted</div>
         </article>
