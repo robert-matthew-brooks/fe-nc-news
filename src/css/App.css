@@ -27,7 +27,7 @@
 .submit-btn {
     color: var(--submit-btn-text);
     font-size: 0.9em;
-    padding: 0.4em 0.6em;
+    padding: 0.3em 0.6em;
     background-color: var(--submit-btn-bg);
     border: 1px solid var(--border-medium);
     border-radius: 0.5em;
@@ -40,14 +40,14 @@
     opacity: 0.5;
 }
 
-@media (min-width: 1366px) {
-    .app > main {
-        border-left: 1px solid var(--border-weak);
-    }
-}
-
 @media (min-width: 1024px) {
     .app > main {
         border-right: 1px solid var(--border-weak);
+    }
+}
+
+@media (min-width: 1366px) {
+    .app > main {
+        border-left: 1px solid var(--border-weak);
     }
 }

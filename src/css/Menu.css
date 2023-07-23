@@ -52,9 +52,9 @@ nav > button.menu-btn {
 }
 
 nav > a {
-    padding: 0.5em 4em 0.5em 2em;
+    padding: 0.5em 2em 0.5em 2em;
     color: inherit;
-    font-size: 1em;
+    font-size: 1.2em;
     text-decoration: none;
 }
 nav > a:first-of-type {
@@ -70,6 +70,12 @@ nav > hr {
     margin: 1.2em auto;
     border: none;
     border-top: 1px solid var(--border-weak);
+}
+
+@media (min-width: 1024px) {
+    nav > a {
+        font-size: 1em;
+    }
 }
 
 @media (min-width: 1366px) {
@@ -88,6 +94,7 @@ nav > hr {
     nav > a {
         padding-top: 0.7em;
         padding-bottom: 0.7em;
+        font-size: 0.9em;
     }
 
     .menu-btn {

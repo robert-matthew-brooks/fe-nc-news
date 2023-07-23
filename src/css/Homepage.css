@@ -5,12 +5,13 @@
 }
 
 .homepage > p {
-    line-height: 2em;
+    line-height: 2.2em;
+    margin: 1.6em 0;
 }
 .homepage > p > img {
     min-width: 10em;
     max-width: 100%;
-    margin: 2em 0;
+    margin-bottom: 2em;
     border: 1px solid black;
 }
 
@@ -23,6 +24,6 @@
     .homepage > p > img {
         max-width: 40%;
         float: left;
-        margin: 0 3em 2em 0;
+        margin: 0.5em 2em 2em 0;
     }
 }

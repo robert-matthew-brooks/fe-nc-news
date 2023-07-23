@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { fetchArticles } from '../util/api.js';
+import { scrollToTop } from '../util/scroll-to-top.js';
 import Title from './Title.jsx';
 import ArticlesSort from './ArticlesSort.jsx';
 import ArticlesCard from './ArticlesCard';
@@ -43,6 +44,7 @@ export default function Articles() {
     useEffect(() => {
         (async () => {
             setIsLoading(true);
+            scrollToTop();
 
             const queries = {};
             if (page) queries.p = page;
