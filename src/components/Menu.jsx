@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchTopics } from '../util/api';
+import { apiFetchTopics } from '../util/api';
 import { capitalise } from '../util/format';
 import CrossImg from '../img/cross.svg';
 import '../css/Menu.css';
@@ -39,7 +39,7 @@ export default function Menu({ isMenuVisible, setIsMenuVisible }) {
             setIsLoading(true);
 
             try {
-                const { topics } = await fetchTopics();
+                const { topics } = await apiFetchTopics();
                 setTopics(topics);
             }
             catch {

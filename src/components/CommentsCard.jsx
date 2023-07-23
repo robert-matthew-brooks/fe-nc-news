@@ -1,13 +1,33 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { apiDeleteComment } from '../util/api.js';
 import { getTimeAgo } from '../util/format.js';
 import Votes from './Votes.jsx';
 import CommentsCardDelete from './CommentsCardDelete.jsx';
 import '../css/CommentsCard.css';
 
-export default function CommentsCard({ commentId, author, createdAt, body, votes }) {
-    const [isRemoved, setIsRemoved] = useState(false);
+export default function CommentsCard({ commentId, author, createdAt, body, votes, comments, setComments, adjustTotalComments }) {
+    const [isDeleted, setIsDeleted] = useState(false);
     const [isDeleteError, setIsDeleteError] = useState(false);
+
+    const deleteComment = async () => {
+        setIsDeleted(true);
+
+        const index = comments.findIndex(comment => comment.comment_id === commentId);
+        comments[index].deleted = true;
+        setComments(comments);
+        adjustTotalComments(-1);
+        
+        try {
+            await apiDeleteComment(commentId);
+        }
+        catch {
+            comments[index].deleted = false;
+            setComments(comments);
+
+            setIsDeleteError(true);
+        }
+    };
     
     if (isDeleteError) {
         return <div className="error">Unable to delete comment</div>;
@@ -18,7 +38,7 @@ export default function CommentsCard({ commentId, author, createdAt, body, votes
                 <CommentsCardDelete
                     commentId={commentId}
                     author={author}
-                    setIsRemoved={setIsRemoved}
+                    deleteComment={deleteComment}
                     setIsDeleteError={setIsDeleteError}
                 />
                 <Link to={{ pathname: `/users/${author}`}}>{author}</Link>
@@ -35,7 +55,7 @@ export default function CommentsCard({ commentId, author, createdAt, body, votes
                 {body}
             </p>
 
-            <div className={`deleted-comment ${!isRemoved && 'hidden'}`}>Comment deleted</div>
+            <div className={`deleted-comment ${!isDeleted && 'hidden'}`}>Comment deleted</div>
         </article>
     );
 }

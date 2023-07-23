@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom';
-import { fetchArticles } from '../util/api.js';
+import { apiFetchArticles } from '../util/api.js';
 import { scrollToTop } from '../util/scroll-to-top.js';
 import Title from './Title.jsx';
 import ArticlesSort from './ArticlesSort.jsx';
@@ -59,7 +59,7 @@ export default function Articles() {
                 const {
                     articles,
                     total_count: totalCount
-                } = await fetchArticles(queries);
+                } = await apiFetchArticles(queries);
 
                 setArticles(articles);
                 setTotalArticles(totalCount);

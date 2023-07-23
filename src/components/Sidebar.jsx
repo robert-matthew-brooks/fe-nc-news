@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchArticles } from '../util/api.js';
+import { apiFetchArticles } from '../util/api.js';
 import SidebarCard from './SidebarCard.jsx';
 import Loading from './Loading.jsx';
 import '../css/Sidebar.css';
@@ -14,7 +14,7 @@ export default function Sidebar() {
             setIsLoading(true);
 
             try {
-                const { articles } = await fetchArticles({ sort_by: 'comment_count', limit: 30 });
+                const { articles } = await apiFetchArticles({ sort_by: 'comment_count', limit: 30 });
                 setArticles(articles);
             }
             catch {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchComments } from '../util/api.js';
+import { apiFetchComments, apiDeleteComment } from '../util/api.js';
 import CommentsCard from './CommentsCard.jsx';
 import CommentsAdd from './CommentsAdd.jsx';
 import CommentsNav from './CommentsNav.jsx';
@@ -9,46 +9,58 @@ import '../css/Comments.css';
 export default function Comments({ articleId }) {
     const [comments, setComments] = useState([]);
     const [totalComments, setTotalComments] = useState();
-    const [page, setPage] = useState();
+    const [isCommentsRequested, setIsCommentsRequested] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
-    const addCommentBatch = async (append = true) => {
+    const fetchCommentBatch = async (append = true) => {
         const queries = {};
-        if (page && append) queries.p = page;
+        if (append) queries.offset = comments.filter(comment => !comment.deleted).length;
 
         try {
             const {
                 comments: fetchedComments,
                 total_count: totalCount
-            } = await fetchComments(articleId, queries);
+            } = await apiFetchComments(articleId, queries);
 
-            setComments([...(append && comments ? comments : []), ...fetchedComments]);
+            for (const comment of fetchedComments) {
+                comment.deleted = false;
+            }
+
+            setComments([
+                ...(append && comments ? comments : []),
+                ...fetchedComments
+            ]);
             setTotalComments(totalCount);
         }
         catch {
             setIsError(true);
         }
-    }
+    };
+
+    const adjustTotalComments = amount => {
+        setTotalComments(totalComments + amount);
+    };
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            setPage();
-            await addCommentBatch(false);
+            await fetchCommentBatch(false);
             setIsLoading(false);
         })();
     }, [articleId]);
 
     useEffect(() => {
-        if (page > 1) {
+        if (isCommentsRequested) {
             (async() => {
                 setIsLoading(true);
-                await addCommentBatch();
+                await fetchCommentBatch();
                 setIsLoading(false);
             })();
+
+            setIsCommentsRequested(false);
         }
-    }, [page]);
+    }, [isCommentsRequested]);
 
     if (isError) {
         return <div className="error">Unable to load comments</div>;
@@ -60,32 +72,33 @@ export default function Comments({ articleId }) {
 
                 <CommentsAdd
                     articleId={articleId}
+                    comments = {comments}
                     setComments = {setComments}
                     totalComments={totalComments}
-                    setTotalComments={setTotalComments}
+                    adjustTotalComments={adjustTotalComments}
                     isLoading={isLoading}
-                    comments = {comments}
                 />
                 
                 <section className="comments-list">
-                    {comments.map(comment => {
+                    {comments.map((comment, index) => {
                         return <CommentsCard
                             key={comment.comment_id}
-                            comments={comments}
                             commentId={comment.comment_id}
                             author={comment.author}
                             createdAt={comment.created_at}
                             body={comment.body}
                             votes={comment.votes}
+                            comments = {comments}
+                            setComments = {setComments}
+                            adjustTotalComments={adjustTotalComments}
                         />;
                     })}
                 </section>
                 
                 <CommentsNav
-                    displayedComments={comments.length}
+                    activeComments={comments.filter(comment => !comment.deleted).length}
                     totalComments={totalComments}
-                    page={page}
-                    setPage={setPage}
+                    setIsCommentsRequested={setIsCommentsRequested}
                     isLoading={isLoading}
                 />
             </Loading>

@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchUser } from '../util/api';
+import { apiFetchUser } from '../util/api';
 import { UserContext } from '../context/User';
 import '../css/HeaderLogin.css';
 
@@ -17,7 +17,7 @@ export default function HeaderLogin() {
         event.target.disabled = true;
 
         try {
-            const { user } = await fetchUser('tickle122');
+            const { user } = await apiFetchUser('tickle122');
             setUserDetails(user);
             setIsUserLoggedIn(true);
         }

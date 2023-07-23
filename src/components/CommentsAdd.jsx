@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { postComment } from '../util/api.js';
+import { apiPostComment } from '../util/api.js';
 import { scrollToTop } from '../util/scroll-to-top.js';
 import { UserContext } from '../context/User.jsx';
 import '../css/CommentsAdd.css';
 
-export default function CommentsAdd({ articleId, comments, setComments, totalComments, setTotalComments, isLoading }) {
+export default function CommentsAdd({ articleId, comments, setComments, totalComments, adjustTotalComments, isLoading }) {
     const { userDetails, isUserLoggedIn } = useContext(UserContext);
 	const [comment, setComment] = useState('');
     const [warning, setWarning] = useState('');
@@ -36,12 +36,11 @@ export default function CommentsAdd({ articleId, comments, setComments, totalCom
             setWarning('');
 
             try {
-                const { comment: newComment } = await postComment(articleId, userDetails.username, comment);
+                const { comment: newComment } = await apiPostComment(articleId, userDetails.username, comment);
 
-                comments.pop()
                 comments.unshift(newComment);
                 setComments(comments);
-                setTotalComments(totalComments + 1);
+                adjustTotalComments(1);
 
                 setTimeout(() => {
                     setComment('');

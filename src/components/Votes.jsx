@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { patchVotes } from '../util/api';
+import { apiPatchVotes } from '../util/api';
 import { getFormattedNumber } from '../util/format';
 import VoteImg from '../img/arrow.png';
 import '../css/Votes.css';
@@ -34,7 +34,7 @@ export default function Votes({ patchUrl, votes }) {
         }
     
         try {
-            await patchVotes(patchUrl, incVotes);
+            await apiPatchVotes(patchUrl, incVotes);
         }
         catch(err) {
             setIsError(true);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams, useLocation } from 'react-router-dom';
-import { fetchArticle, fetchUser } from '../util/api.js';
+import { apiFetchArticle, apiFetchUser } from '../util/api.js';
 import { getFormattedDate } from '../util/format.js';
 import { scrollToTop } from '../util/scroll-to-top.js';
 import Title from './Title.jsx';
@@ -23,9 +23,9 @@ export default function Articles() {
             scrollToTop();
 
             try {
-                const { article } = await fetchArticle(articleId);
+                const { article } = await apiFetchArticle(articleId);
                 setArticle(article);
-                const { user } =  await fetchUser(article.author);
+                const { user } =  await apiFetchUser(article.author);
                 setAvatarUrl(user.avatar_url);
             }
             catch {
