@@ -9,7 +9,7 @@ export default function CommentsNav({ displayedComments, totalComments, page = 1
                 </p>
                 <button
                     onClick={() => setPage(page + 1)}
-                    className={displayedComments === totalComments ? 'hidden' : ''}
+                    className={displayedComments === totalComments ? 'hidden' : undefined}
                     disabled={isLoading}
                 >
                     Load more comments...

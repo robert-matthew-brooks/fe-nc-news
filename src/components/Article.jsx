@@ -50,7 +50,7 @@ export default function Articles() {
                     <div className="article-details">
                         <Link to={{ pathname: `/users/${article.author}`}}>
                             <img
-                                className={`author-avatar ${avatarUrl ? '' : 'hidden'}`}
+                                className={`author-avatar ${!avatarUrl && 'hidden'}`}
                                 src={avatarUrl}
                                 alt={`${article.author}'s avatar`}
                             />

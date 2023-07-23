@@ -35,7 +35,7 @@ export default function CommentsCard({ comment_id, author, created_at, body, vot
                 {body}
             </p>
 
-            <div className={`deleted-comment ${isRemoved ? '' : 'hidden'}`}>Comment deleted</div>
+            <div className={`deleted-comment ${!isRemoved && 'hidden'}`}>Comment deleted</div>
         </article>
     );
 }

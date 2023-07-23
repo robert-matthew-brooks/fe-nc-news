@@ -67,7 +67,7 @@ export default function CommentsAdd({ article_id, comments, setComments, totalCo
 				placeholder={
 					isUserLoggedIn ?
 						(!totalComments && !isLoading ? 'Be the first to leave a comment!' : 'Leave a comment')
-						: ''
+						: undefined
 				}
 				value={comment}
 				onChange={event => setComment(event.target.value)}
@@ -78,7 +78,7 @@ export default function CommentsAdd({ article_id, comments, setComments, totalCo
                 Please&nbsp;<Link to="#" onClick={scrollToTop}>sign in</Link>&nbsp;to comment
             </div>
 
-			<p className={`warning ${!warning ? 'hidden' : ''}`}>
+			<p className={`warning ${!warning && 'hidden'}`}>
 				{warning}
 			</p>
 

@@ -53,12 +53,12 @@ export default function Menu({ isMenuVisible, setIsMenuVisible }) {
     return (
         <>
             <div
-                className={`menu-overlay ${isMenuVisible ? '' : 'hidden'}`}
+                className={`menu-overlay ${!isMenuVisible && 'hidden'}`}
                 onClick={() => setIsMenuVisible(false)}
             >
             </div>
 
-            <nav className={isMenuVisible ? '' : 'closed'}>
+            <nav className={!isMenuVisible ? 'closed' : undefined}>
                 <button
                     className="menu-btn"
                     onClick={() => {setIsMenuVisible(!isMenuVisible)}}
