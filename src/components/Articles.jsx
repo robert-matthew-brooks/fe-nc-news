@@ -19,8 +19,8 @@ export default function Articles() {
     const [isError, setIsError] = useState(false);
     const articlesPerPage = 10;
     const page = searchParams.get("p");
-    const sortBy = searchParams.get("sort_by");
-    const sortOrder = searchParams.get("order");
+    const sortByFromUrl = searchParams.get("sort_by");
+    const sortOrderFromUrl = searchParams.get("order");
 
     const addPageToURL = page => {
         setSearchParams(params => {
@@ -45,21 +45,24 @@ export default function Articles() {
 
     useEffect(() => {
         (async () => {
-            setIsError(false)
+            setIsError(false);
             setIsLoading(true);
             scrollToTop();
 
             const queries = {};
             if (topic) queries.topic = topic;
             if (page) queries.p = page;
-            if (sortBy) queries.sort_by = sortBy;
-            if (sortOrder) queries.order = sortOrder;
+            if (sortByFromUrl) queries.sort_by = sortByFromUrl;
+            if (sortOrderFromUrl) queries.order = sortOrderFromUrl;
 
             try {
-                const { articles, total_count } = await fetchArticles(queries);
+                const {
+                    articles,
+                    total_count: totalCount
+                } = await fetchArticles(queries);
 
                 setArticles(articles);
-                setTotalArticles(total_count);
+                setTotalArticles(totalCount);
             }
             catch(err) {
                 setIsError(true);
@@ -79,9 +82,9 @@ export default function Articles() {
                 <Title title={`${topic ? capitalise(topic) : 'All'} Articles`} />
 
                 <ArticlesSort
-                    sortBy={sortBy}
+                    sortByFromUrl={sortByFromUrl}
                     addSortByToURL={addSortByToURL}
-                    sortOrder={sortOrder}
+                    sortOrderFromUrl={sortOrderFromUrl}
                     addSortOrderToURL={addSortOrderToURL}
                 />
 
@@ -89,13 +92,13 @@ export default function Articles() {
                     {articles.map(article => {
                         return <ArticlesCard
                             key={article.article_id}
-                            article_id={article.article_id}
-                            article_img_url={article.article_img_url}
+                            articleId={article.article_id}
+                            articleImgUrl={article.article_img_url}
                             title={article.title}
                             author={article.author}
-                            created_at={article.created_at}
+                            createdAt={article.created_at}
                             votes={article.votes}
-                            comment_count={article.comment_count}
+                            commentCount={article.comment_count}
                         />;
                     })}
                 </section>

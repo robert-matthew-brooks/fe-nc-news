@@ -5,7 +5,7 @@ import Votes from './Votes.jsx';
 import CommentsCardDelete from './CommentsCardDelete.jsx';
 import '../css/CommentsCard.css';
 
-export default function CommentsCard({ comment_id, author, created_at, body, votes }) {
+export default function CommentsCard({ commentId, author, createdAt, body, votes }) {
     const [isRemoved, setIsRemoved] = useState(false);
     const [isDeleteError, setIsDeleteError] = useState(false);
     
@@ -16,19 +16,19 @@ export default function CommentsCard({ comment_id, author, created_at, body, vot
         <article className="comments-card">
             <p className="user-and-time">
                 <CommentsCardDelete
-                    comment_id={comment_id}
+                    commentId={commentId}
                     author={author}
                     setIsRemoved={setIsRemoved}
                     setIsDeleteError={setIsDeleteError}
                 />
                 <Link to={{ pathname: `/users/${author}`}}>{author}</Link>
                 &nbsp;-&nbsp;
-                {getTimeAgo(created_at)}
+                {getTimeAgo(createdAt)}
             </p>
 
             <Votes
                 votes={votes}
-                patchUrl={`/comments/${comment_id}`}
+                patchUrl={`/comments/${commentId}`}
             />
 
             <p className="comment-body">

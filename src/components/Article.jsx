@@ -10,7 +10,7 @@ import Loading from './Loading.jsx';
 import '../css/Article.css';
 
 export default function Articles() {
-    const { article_id } = useParams();
+    const { article_id: articleId } = useParams();
     const { hash } = useLocation();
     const [article, setArticle] = useState({});
     const [avatarUrl, setAvatarUrl] = useState();
@@ -19,11 +19,11 @@ export default function Articles() {
 
     useEffect(() => {
         (async () => {
-            scrollToTop();
             setIsLoading(true);
+            scrollToTop();
 
             try {
-                const { article } = await fetchArticle(article_id);
+                const { article } = await fetchArticle(articleId);
                 setArticle(article);
                 const { user } =  await fetchUser(article.author);
                 setAvatarUrl(user.avatar_url);
@@ -36,7 +36,7 @@ export default function Articles() {
             if (hash === '#votes') document.getElementById('votes').scrollIntoView({ block: 'center' });
             else if (hash === '#comments') document.getElementById('comments').scrollIntoView({ block: 'start' });
         })()
-    }, [article_id]);
+    }, [articleId]);
 
     if (isError) {
         return <div className="error">Unable to load article</div>;
@@ -72,14 +72,14 @@ export default function Articles() {
                     </figcaption>
                     <Votes
                         votes={article.votes}
-                        patchUrl={`/articles/${article_id}`}
+                        patchUrl={`/articles/${articleId}`}
                     />
                     <a id="votes" className="anchor"></a>
                 </Loading>
             </article>
 
             <a id="comments" className="anchor"></a>
-            <Comments article_id={article_id} />
+            <Comments articleId={articleId} />
         </main>
     );
 }

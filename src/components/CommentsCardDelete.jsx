@@ -3,7 +3,7 @@ import { deleteComment } from '../util/api';
 import { UserContext } from '../context/User';
 import '../css/CommentsCardDelete.css';
 
-export default function CommentsCardDelete({ comment_id, author, setIsRemoved, setIsDeleteError }) {
+export default function CommentsCardDelete({ commentId, author, setIsRemoved, setIsDeleteError }) {
     const {
         userDetails,
         isUserLoggedIn
@@ -13,7 +13,7 @@ export default function CommentsCardDelete({ comment_id, author, setIsRemoved, s
         setIsRemoved(true);
 
         try {
-            await deleteComment(comment_id);
+            await deleteComment(commentId);
         }
         catch {
             setIsDeleteError(true);

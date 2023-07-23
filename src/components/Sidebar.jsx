@@ -37,9 +37,9 @@ export default function Sidebar() {
                         return (
                             <SidebarCard
                                 key={article.article_id}
-                                article_id={article.article_id}
+                                articleId={article.article_id}
                                 title={article.title}
-                                article_img_url={article.article_img_url}
+                                articleImgUrl={article.article_img_url}
                                 votes={article.votes}
                                 i={i}
                             />

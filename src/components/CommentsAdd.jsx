@@ -5,7 +5,7 @@ import { scrollToTop } from '../util/scroll-to-top.js';
 import { UserContext } from '../context/User.jsx';
 import '../css/CommentsAdd.css';
 
-export default function CommentsAdd({ article_id, comments, setComments, totalComments, setTotalComments, isLoading }) {
+export default function CommentsAdd({ articleId, comments, setComments, totalComments, setTotalComments, isLoading }) {
     const { userDetails, isUserLoggedIn } = useContext(UserContext);
 	const [comment, setComment] = useState('');
     const [warning, setWarning] = useState('');
@@ -16,7 +16,7 @@ export default function CommentsAdd({ article_id, comments, setComments, totalCo
         setComment('');
         setWarning('');
         if (textarea) textarea.classList.remove('invalid');
-    }, [article_id]);
+    }, [articleId]);
 
 	const submitComment = async event => {
 		event.preventDefault();
@@ -36,7 +36,7 @@ export default function CommentsAdd({ article_id, comments, setComments, totalCo
             setWarning('');
 
             try {
-                const { comment: newComment } = await postComment(article_id, userDetails.username, comment);
+                const { comment: newComment } = await postComment(articleId, userDetails.username, comment);
 
                 comments.pop()
                 comments.unshift(newComment);

@@ -14,13 +14,13 @@ export async function fetchArticles(params) {
     return response.data;
 }
 
-export async function fetchArticle(article_id) {
-    const response = await api.get(`/articles/${article_id}`);
+export async function fetchArticle(articleId) {
+    const response = await api.get(`/articles/${articleId}`);
     return response.data;
 }
 
-export async function fetchComments(article_id, params) {
-    const response = await api.get(`/articles/${article_id}/comments`, { params });
+export async function fetchComments(articleId, params) {
+    const response = await api.get(`/articles/${articleId}/comments`, { params });
     return response.data;
 }
 
@@ -29,17 +29,17 @@ export async function fetchUser(username) {
     return response.data;
 }
 
-export async function patchVotes(url, inc_votes) {
-    const response = await api.patch(url, { inc_votes });
+export async function patchVotes(url, incVotes) {
+    const response = await api.patch(url, { inc_votes: incVotes });
     return response.data;
 }
 
-export async function postComment(article_id, username, body) {
-    const response = await api.post(`/articles/${article_id}/comments`, { username, body });
+export async function postComment(articleId, username, body) {
+    const response = await api.post(`/articles/${articleId}/comments`, { username, body });
     return response.data;
 }
 
-export async function deleteComment(comment_id) {
-    const response = await api.delete(`/comments/${comment_id}`);
+export async function deleteComment(commentId) {
+    const response = await api.delete(`/comments/${commentId}`);
     return response.data;
 }

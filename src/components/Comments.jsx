@@ -6,7 +6,7 @@ import CommentsNav from './CommentsNav.jsx';
 import Loading from './Loading.jsx';
 import '../css/Comments.css';
 
-export default function Comments({ article_id }) {
+export default function Comments({ articleId }) {
     const [comments, setComments] = useState([]);
     const [totalComments, setTotalComments] = useState();
     const limit = 10;
@@ -19,10 +19,14 @@ export default function Comments({ article_id }) {
         if (page && append) queries.p = page;
 
         try {
-            const { comments: fetchedComments, total_count } = await fetchComments(article_id, queries);
+            const {
+                comments: fetchedComments,
+                total_count: totalCount
+            } = await fetchComments(articleId, queries);
+
             if (append) setComments([...(append && comments), ...fetchedComments]);
             else setComments([...[], ...fetchedComments]);
-            setTotalComments(total_count);
+            setTotalComments(totalCount);
         }
         catch {
             setIsError(true);
@@ -36,7 +40,7 @@ export default function Comments({ article_id }) {
             await addCommentBatch(false);
             setIsLoading(false);
         })();
-    }, [article_id]);
+    }, [articleId]);
 
     useEffect(() => {
         if (page > 1) {
@@ -57,7 +61,7 @@ export default function Comments({ article_id }) {
                 <h2>Comments:</h2>
 
                 <CommentsAdd
-                    article_id={article_id}
+                    articleId={articleId}
                     setComments = {setComments}
                     totalComments={totalComments}
                     setTotalComments={setTotalComments}
@@ -70,9 +74,9 @@ export default function Comments({ article_id }) {
                         return <CommentsCard
                             key={comment.comment_id}
                             comments={comments}
-                            comment_id={comment.comment_id}
+                            commentId={comment.comment_id}
                             author={comment.author}
-                            created_at={comment.created_at}
+                            createdAt={comment.created_at}
                             body={comment.body}
                             votes={comment.votes}
                         />;

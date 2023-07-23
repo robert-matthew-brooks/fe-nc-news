@@ -9,7 +9,7 @@ const sortByOptions = [
     {text: 'Votes', value: 'votes'}
 ];
 
-export default function ArticlesSort({ sortBy: sortByFromURL, addSortByToURL, sortOrder: sortOrderFromURL, addSortOrderToURL }) {
+export default function ArticlesSort({ sortByFromURL, addSortByToURL, sortOrderFromURL, addSortOrderToURL }) {
     const [sortBy, setSortBy] = useState(sortByFromURL);
     const [sortOrder, setSortOrder] = useState(sortOrderFromURL || 'desc');
 
