@@ -15,7 +15,8 @@
     --border-medium: #606060;
     --border-weak: #c0c0c0;
 
-    --loading-bg: #00000080;
+    --menu-overlay-bg: #00000080;
+    --loading-bg: #ffffffd0;
 
     --submit-btn-text: #000000;
     --submit-btn-bg: #33b249;

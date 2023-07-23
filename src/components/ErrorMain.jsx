@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Title from './Title';
 import '../css/ErrorMain.css';
 import SadCat from '../img/404.jpeg';
 

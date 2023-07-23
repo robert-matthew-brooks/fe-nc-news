@@ -3,7 +3,7 @@
     z-index: 98;
     width: 100vw;
     height: 100vh;
-    background-color: var(--loading-bg);
+    background-color: var(--menu-overlay-bg);
 }
 
 .menu-btn {

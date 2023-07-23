@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchArticles } from '../util/api.js';
 import SidebarCard from './SidebarCard.jsx';
-import LoadingImg from '../img/loading.png';
+import Loading from './Loading.jsx';
 import '../css/Sidebar.css';
 
 export default function Sidebar() {
@@ -30,25 +30,23 @@ export default function Sidebar() {
     }
 	else return (
         <aside className="sidebar">
-            <h3>Most Commented:</h3>
-            <div className="sidebar-list">
-                {articles.map((article, i) => {
-                    return (
-                        <SidebarCard
-                            key={article.article_id}
-                            article_id={article.article_id}
-                            title={article.title}
-                            article_img_url={article.article_img_url}
-                            comment_count={article.comment_count}
-                            i={i}
-                        />
-                    );
-                })}
-            </div>
-
-            <div className={isLoading ? 'loading' : 'hidden'}>
-                <img src={LoadingImg} alt="loading" />
-            </div>
+            <Loading isLoading={isLoading}>
+                <h3>Trending:</h3>
+                <div className="sidebar-list">
+                    {articles.map((article, i) => {
+                        return (
+                            <SidebarCard
+                                key={article.article_id}
+                                article_id={article.article_id}
+                                title={article.title}
+                                article_img_url={article.article_img_url}
+                                votes={article.votes}
+                                i={i}
+                            />
+                        );
+                    })}
+                </div>
+            </Loading>
         </aside>
     );
 }

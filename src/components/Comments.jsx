@@ -3,7 +3,7 @@ import { fetchComments } from '../util/api.js';
 import CommentsCard from './CommentsCard.jsx';
 import CommentsAdd from './CommentsAdd.jsx';
 import CommentsNav from './CommentsNav.jsx';
-import LoadingImg from '../img/loading.png';
+import Loading from './Loading.jsx';
 import '../css/Comments.css';
 
 export default function Comments({ article_id }) {
@@ -53,42 +53,40 @@ export default function Comments({ article_id }) {
     }
     else return (
         <section className="comments">
-            <h2>Comments:</h2>
+            <Loading isLoading={isLoading}>
+                <h2>Comments:</h2>
 
-            <CommentsAdd
-                article_id={article_id}
-                setComments = {setComments}
-                totalComments={totalComments}
-                setTotalComments={setTotalComments}
-                isLoading={isLoading}
-                comments = {comments}
-            />
-            
-            <section className="comments-list">
-                {comments.map(comment => {
-                    return <CommentsCard
-                        key={comment.comment_id}
-                        comments={comments}
-                        comment_id={comment.comment_id}
-                        author={comment.author}
-                        created_at={comment.created_at}
-                        body={comment.body}
-                        votes={comment.votes}
-                    />;
-                })}
-            </section>
-            
-            <CommentsNav
-                displayedComments={comments.length}
-                totalComments={totalComments}
-                page={page}
-                setPage={setPage}
-                isLoading={isLoading}
-            />
-
-            <div className={isLoading ? 'loading' : 'hidden'}>
-                <img src={LoadingImg} alt="loading" />
-            </div>
+                <CommentsAdd
+                    article_id={article_id}
+                    setComments = {setComments}
+                    totalComments={totalComments}
+                    setTotalComments={setTotalComments}
+                    isLoading={isLoading}
+                    comments = {comments}
+                />
+                
+                <section className="comments-list">
+                    {comments.map(comment => {
+                        return <CommentsCard
+                            key={comment.comment_id}
+                            comments={comments}
+                            comment_id={comment.comment_id}
+                            author={comment.author}
+                            created_at={comment.created_at}
+                            body={comment.body}
+                            votes={comment.votes}
+                        />;
+                    })}
+                </section>
+                
+                <CommentsNav
+                    displayedComments={comments.length}
+                    totalComments={totalComments}
+                    page={page}
+                    setPage={setPage}
+                    isLoading={isLoading}
+                />
+            </Loading>
         </section>
     );
 }

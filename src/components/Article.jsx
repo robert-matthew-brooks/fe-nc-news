@@ -6,7 +6,7 @@ import { scrollToTop } from '../util/scroll-to-top.js';
 import Title from './Title.jsx';
 import Votes from './Votes.jsx';
 import Comments from './Comments.jsx';
-import LoadingImg from '../img/loading.png';
+import Loading from './Loading.jsx';
 import '../css/Article.css';
 
 export default function Articles() {
@@ -44,41 +44,38 @@ export default function Articles() {
     else return (
         <main className="article">
             <article>
-                <Title title={article.title} />
+                <Loading isLoading={isLoading}>
+                    <Title title={article.title} />
 
-                <div className="article-details">
-                    <Link to={{ pathname: `/users/${article.author}`}}>
-                        <img
-                            className={`author-avatar ${avatarUrl ? '' : 'hidden'}`}
-                            src={avatarUrl}
-                            alt={`${article.author}'s avatar`}
-                        />
-                        <span>{article.author}</span>
-                    </Link>
-                    <time>
-                        {getFormattedDate(article.created_at)}
-                    </time>
-                </div>
-            
-                <img src={article.article_img_url} alt={article.title} />
-
-                <p>
-                    {article.body}
-                </p>
-
-                <figcaption className={isNaN(article.votes) ? 'hidden' : ''}>
-                    Rate this article?
-                </figcaption>
-                <Votes
-                    votes={article.votes}
-                    patchUrl={`/articles/${article_id}`}
-                />
-                <a id="votes" className="anchor"></a>
+                    <div className="article-details">
+                        <Link to={{ pathname: `/users/${article.author}`}}>
+                            <img
+                                className={`author-avatar ${avatarUrl ? '' : 'hidden'}`}
+                                src={avatarUrl}
+                                alt={`${article.author}'s avatar`}
+                            />
+                            <span>{article.author}</span>
+                        </Link>
+                        <time>
+                            {getFormattedDate(article.created_at)}
+                        </time>
+                    </div>
                 
+                    <img src={article.article_img_url} alt={article.title} />
 
-                <div className={isLoading ? 'loading' : 'hidden'}>
-                    <img src={LoadingImg} alt="loading" />
-                </div>
+                    <p>
+                        {article.body}
+                    </p>
+
+                    <figcaption className={isNaN(article.votes) ? 'hidden' : ''}>
+                        Rate this article?
+                    </figcaption>
+                    <Votes
+                        votes={article.votes}
+                        patchUrl={`/articles/${article_id}`}
+                    />
+                    <a id="votes" className="anchor"></a>
+                </Loading>
             </article>
 
             <a id="comments" className="anchor"></a>

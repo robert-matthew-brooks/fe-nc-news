@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../css/SidebarCard.css';
 
-export default function SidebarCard({ article_id, title, article_img_url, comment_count, i }) {
+export default function SidebarCard({ article_id, title, article_img_url, votes, i }) {
     return (
         <Link to={{ pathname: `/articles/${article_id}`}} tabIndex={-1}>
             <article
@@ -9,7 +9,7 @@ export default function SidebarCard({ article_id, title, article_img_url, commen
                 style={{backgroundImage: `url(${article_img_url})`}}
             >
                 <h4>#{i+1} - {title}</h4>
-                <span>{comment_count} comments</span>
+                <span>{votes} votes</span>
             </article>
         </Link>
     );

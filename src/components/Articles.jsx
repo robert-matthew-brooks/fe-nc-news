@@ -6,7 +6,7 @@ import Title from './Title.jsx';
 import ArticlesSort from './ArticlesSort.jsx';
 import ArticlesCard from './ArticlesCard';
 import ArticlesNav from './ArticlesNav.jsx';
-import LoadingImg from '../img/loading.png';
+import Loading from './Loading.jsx';
 import '../css/Articles.css';
 
 export default function Articles() {
@@ -44,6 +44,7 @@ export default function Articles() {
 
     useEffect(() => {
         (async () => {
+            setIsError(false)
             setIsLoading(true);
             scrollToTop();
 
@@ -59,54 +60,53 @@ export default function Articles() {
                 setArticles(articles);
                 setTotalArticles(total_count);
             }
-            catch {
+            catch(err) {
                 setIsError(true);
+                console.log(err);
             }
 
             setIsLoading(false);
         })();
-    }, [searchParams]);
+    }, [topic, searchParams]);
 
     if (isError) {
         return <div className="error">Unable to load articles</div>;
     }
     else return (
         <main className="articles">
-            <Title title="Articles" />
+            <Loading isLoading={isLoading}>
+                <Title title="Articles" />
 
-            <ArticlesSort
-                sortBy={sortBy}
-                addSortByToURL={addSortByToURL}
-                sortOrder={sortOrder}
-                addSortOrderToURL={addSortOrderToURL}
-            />
+                <ArticlesSort
+                    sortBy={sortBy}
+                    addSortByToURL={addSortByToURL}
+                    sortOrder={sortOrder}
+                    addSortOrderToURL={addSortOrderToURL}
+                />
 
-            <section className="articles-list">
-                {articles.map(article => {
-                    return <ArticlesCard
-                        key={article.article_id}
-                        article_id={article.article_id}
-                        article_img_url={article.article_img_url}
-                        title={article.title}
-                        author={article.author}
-                        created_at={article.created_at}
-                        votes={article.votes}
-                        comment_count={article.comment_count}
-                    />;
-                })}
-            </section>
+                <section className="articles-list">
+                    {articles.map(article => {
+                        return <ArticlesCard
+                            key={article.article_id}
+                            article_id={article.article_id}
+                            article_img_url={article.article_img_url}
+                            title={article.title}
+                            author={article.author}
+                            created_at={article.created_at}
+                            votes={article.votes}
+                            comment_count={article.comment_count}
+                        />;
+                    })}
+                </section>
 
-            <ArticlesNav
-                page={page}
-                changePage={addPageToURL}
-                articlesPerPage={articlesPerPage}
-                totalArticles={totalArticles}
-                isLoading={isLoading}
-            />
-
-            <div className={isLoading ? 'loading' : 'hidden'}>
-                <img src={LoadingImg} alt="loading" />
-            </div>
+                <ArticlesNav
+                    page={page}
+                    changePage={addPageToURL}
+                    articlesPerPage={articlesPerPage}
+                    totalArticles={totalArticles}
+                    isLoading={isLoading}
+                />
+            </Loading>
         </main>
     );
 }

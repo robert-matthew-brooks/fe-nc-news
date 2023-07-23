@@ -8,8 +8,6 @@ import '../css/CommentsCard.css';
 export default function CommentsCard({ comment_id, author, created_at, body, votes }) {
     const [isRemoved, setIsRemoved] = useState(false);
     const [isDeleteError, setIsDeleteError] = useState(false);
-
-    console.log(isRemoved);
     
     if (isDeleteError) {
         return <div className="error">Unable to delete comment</div>;
