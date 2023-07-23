@@ -9,7 +9,6 @@ import '../css/Comments.css';
 export default function Comments({ articleId }) {
     const [comments, setComments] = useState([]);
     const [totalComments, setTotalComments] = useState();
-    const limit = 10;
     const [page, setPage] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
@@ -24,8 +23,7 @@ export default function Comments({ articleId }) {
                 total_count: totalCount
             } = await fetchComments(articleId, queries);
 
-            if (append) setComments([...(append && comments), ...fetchedComments]);
-            else setComments([...[], ...fetchedComments]);
+            setComments([...(append && comments ? comments : []), ...fetchedComments]);
             setTotalComments(totalCount);
         }
         catch {
