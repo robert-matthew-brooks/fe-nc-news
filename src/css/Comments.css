@@ -3,7 +3,7 @@
     width: 100%;
     max-width: var(--main-max-width);
     margin: 0 auto;
-    padding: 0 var(--main--horizontal-padding);
+    padding: 0 var(--main-horizontal-padding);
 }
 
 .comments > h2 {

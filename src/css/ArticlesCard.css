@@ -1,9 +1,9 @@
 .articles-card {
     width: 100%;
     overflow: hidden;
-    background-color: var(--primary-bg);
-    border-top: 1px solid var(--border-weak);
-    border-bottom: 1px solid var(--border-weak);
+    background-color: var(--clr-primary-bg);
+    border-top: 1px solid var(--clr-border-wk);
+    border-bottom: 1px solid var(--clr-border-wk);
 }
 .articles-card > a {
     display: block;
@@ -11,24 +11,24 @@
     text-decoration: none;
 }
 .articles-card:hover {
-    border-color: var(--border-medium);
+    border-color: var(--clr-border);
 }
 
 
 .articles-card p {
     margin: 0;
     padding: 0.5em;
-    color: var(--primary-text-weak);
+    color: var(--clr-primary-text-wk);
     font-size: 0.9em;
-    background-color: var(--primary-bg-weak);
+    background-color: var(--clr-primary-bg-wk);
 }
 
 .articles-card > p.user-and-time > a {
     font-weight: bold;
-    color: var(--primary-href);
+    color: var(--clr-primary-href);
 }
 .articles-card > p.user-and-time > a:hover {
-    color: var(--primary-href-hover);
+    color: var(--clr-primary-href-hover);
 }
 
 .articles-card > a > h3 {
@@ -43,7 +43,7 @@
     max-height: 300px;
     display: block;
     margin: auto;
-    border: 1px solid var(--border-medium);
+    border: 1px solid var(--clr-border);
 }
 
 .articles-card > p.comments-and-votes {
@@ -62,7 +62,7 @@
 
 @media (min-width: 768px) {
     .articles-card {
-        border: 1px solid var(--border-weak);
+        border: 1px solid var(--clr-border-wk);
         border-radius: 0.2em;
     }
 

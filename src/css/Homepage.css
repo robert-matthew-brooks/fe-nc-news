@@ -1,6 +1,6 @@
 .homepage {
-    padding: 0 var(--main--horizontal-padding);
-    background-color: var(--primary-bg);
+    padding: 0 var(--main-horizontal-padding);
+    background-color: var(--clr-primary-bg);
 }
 
 .homepage > p {

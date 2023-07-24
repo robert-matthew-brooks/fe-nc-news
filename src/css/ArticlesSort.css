@@ -11,13 +11,13 @@
 .articles-sort > form > select,
 .articles-sort > form > button {
     height: 2.5em;
-    background-color: var(--primary-bg);
-    border: 1px solid var(--border-weak);
+    background-color: var(--clr-primary-bg);
+    border: 1px solid var(--clr-border-wk);
     cursor: pointer;
 }
 .articles-sort > form > select:hover,
 .articles-sort > form > button:hover {
-    border-color: var(--border-medium);
+    border-color: var(--clr-border);
 }
 
 .articles-sort > form > select {
@@ -31,10 +31,4 @@
 .articles-sort > form > button > img {
     height: 100%;
     aspect-ratio: 1;
-}
-.asc {
-    transform: rotate(180deg);
-}
-.desc {
-    transform: rotate(0deg);
 }

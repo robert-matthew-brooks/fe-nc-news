@@ -19,12 +19,12 @@
     margin: 1em 0;
     padding: 0.7em;
     font-size: 0.9em;
-    background-color: var(--secondary-bg);
-    border: 1px solid var(--border-weak);
+    background-color: var(--clr-secondary-bg);
+    border: 1px solid var(--clr-border-wk);
     border-radius: 1em;
     cursor: pointer;
 }
 
 .comments-nav > button:hover {
-    border-color: var(--border-medium);
+    border-color: var(--clr-border);
 }

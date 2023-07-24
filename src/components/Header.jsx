@@ -8,7 +8,7 @@ export default function Header({ isMenuVisible, setIsMenuVisible }) {
     return (
         <header>
             <button
-                className="menu-btn"
+                className="nav__button-open"
                 onClick={() => setIsMenuVisible(!isMenuVisible)}
             >
                 <img src={MenuImg} alt="open menu" />

@@ -8,20 +8,20 @@
     margin: 1em 0.2em;
     padding: 0.4em 0.6em;
     font-size: 1.1em;
-    background-color: var(--primary-bg);
-    border: 1px solid var(--border-weak);
+    background-color: var(--clr-primary-bg);
+    border: 1px solid var(--clr-border-wk);
     border-radius: 0.3em;
 }
 
 .articles-nav > button:enabled:hover {
-    border-color: var(--border-medium);
+    border-color: var(--clr-border);
     cursor: pointer;
 }
 
 .articles-nav > button:disabled {
     font-weight: bold;
-    color: var(--contrast-text);
-    background-color: var(--contrast-bg);
+    color: var(--clr-contrast-text);
+    background-color: var(--clr-contrast-bg);
 }
 
 .articles-nav > button:first-of-type:disabled,

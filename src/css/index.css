@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-    color: var(--primary-text);
+    color: var(--clr-primary-text);
     font-family: 'Gothic A1', sans-serif;
     font-size: 16px;
 }
@@ -24,14 +24,14 @@ body {
     margin: auto;
     padding: 0.5em;
     text-align: center;
-    color: var(--error-text);
+    color: var(--clr-error-text);
     font-size: 1.3em;
     font-weight: bold;
-    background-color: var(--error-bg);
+    background-color: var(--clr-error-bg);
 }
 .error::before {
     content: '\26a0\a0';
-    color: var(--error-symbol);
+    color: var(--clr-error-symbol);
 }
 
 @media (min-width: 768px) {

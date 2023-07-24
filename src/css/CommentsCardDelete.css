@@ -1,14 +1,14 @@
-.comment-delete {
+.comments-add__delete-btn {
     width: 1.5em;
     height: 1.5em;
     margin-right: 0.5em;
     padding: 0.1em;
-    background-color: var(--delete-btn-bg);
-    border: 1px solid var(--delete-btn-border);
+    background-color: var(--clr-comment-delete-btn-bg);
+    border: 1px solid var(--clr-comment-delete-btn-border);
     border-radius: 0.2em;
     cursor: pointer;
 }
 
-.comment-delete:hover {
-    background-color: var(--delete-btn-bg-hover);
+.comments-add__delete-btn:hover {
+    background-color: var(--clr-comment-delete-btn-bg-hover);
 }

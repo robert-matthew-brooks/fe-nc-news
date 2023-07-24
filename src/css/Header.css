@@ -4,8 +4,8 @@ header {
     align-items: center;
     gap: 1em;
     padding: 0.5em 0.5em;
-    background-color: var(--secondary-bg-weak);
-    border-bottom: 1px solid var(--border-weak);
+    background-color: var(--clr-secondary-bg-wk);
+    border-bottom: 1px solid var(--clr-border-wk);
 }
 
 header > a.logo {
@@ -30,5 +30,5 @@ header > a.logo > h2 {
     font-weight: normal;
 }
 header > a.logo:hover {
-    background-color: var(--secondary-bg);
+    background-color: var(--clr-secondary-bg);
 }

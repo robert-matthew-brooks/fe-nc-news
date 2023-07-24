@@ -31,14 +31,14 @@ export default function HeaderLogin() {
     }
     else if (isUserLoggedIn) {
         return (
-            <Link className="profile-link" to={{ pathname: `/users/${userDetails.username}`}}>
+            <Link className="header__profile-link" to={{ pathname: `/users/${userDetails.username}`}}>
                 <img src={userDetails.avatar_url} alt={`${userDetails.username}'s avatar`}/>
             </Link>
         );
     }
     else {
         return (
-            <button className="submit-btn" onClick={event => login(event)}>
+            <button className="header__login-btn" onClick={event => login(event)}>
                 Sign In
             </button>
         );

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--secondary-bg);
+    background-color: var(--clr-secondary-bg);
 }
 
 .articles-list {
@@ -17,6 +17,6 @@
 @media (min-width: 768px) {
     .articles-list {
         gap: 1em;
-        padding: 0 var(--main--horizontal-padding);
+        padding: 0 var(--main-horizontal-padding);
     }
 }

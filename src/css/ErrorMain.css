@@ -12,20 +12,20 @@
 
 .error-main > img {
     height: 10em;
-    border: 2px solid var(--border-weak);
+    border: 2px solid var(--clr-border-wk);
     border-radius: 50%;
 }
 
 .error-main > h2 {
     padding: 0.5em;
     font-size: 1.5em;
-    color: var(--error-text);
-    background: var(--error-bg);
+    color: var(--clr-error-text);
+    background: var(--clr-error-bg);
 }
 
 .error-main > a {
-    color: var(--primary-href);
+    color: var(--clr-primary-href);
 }
 .error-main > a:hover {
-    color: var(--primary-href-hover);
+    color: var(--clr-primary-href-hover);
 }

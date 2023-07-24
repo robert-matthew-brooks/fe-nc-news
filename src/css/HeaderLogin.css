@@ -1,14 +1,30 @@
-/* button styling in App.css */
+/* menu hamburger button styling in Menu.css */
 
-header > a.profile-link > img {
+.header__login-btn {
+    color: var(--clr-submit-btn-text);
+    font-size: 0.9em;
+    padding: 0.3em 0.6em;
+    background-color: var(--clr-submit-btn-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: 0.5em;
+}
+.header__login-btn:enabled:hover {
+    background-color: var(--clr-submit-btn-bg-hover);
+    cursor: pointer;
+}
+.header__login-btn:disabled {
+    opacity: 0.5;
+}
+
+.header__profile-link > img {
     height: 2em;
     display: block;
     aspect-ratio: 1;
     object-fit: cover;
-    border: 1px solid var(--border-medium);
+    border: 1px solid var(--clr-border);
     border-radius: 0.3em;
 }
-header > a.profile-link:hover > img {
-    background-color: var(--secondary-bg);
-    border-color: var(--border-strong);
+.header__profile-link:hover > img {
+    background-color: var(--clr-secondary-bg);
+    border-color: var(--clr-border-str);
 }

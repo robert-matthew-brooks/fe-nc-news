@@ -9,30 +9,30 @@ export default function CommentsAdd({ articleId, comments, setComments, totalCom
     const { userDetails, isUserLoggedIn } = useContext(UserContext);
 	const [comment, setComment] = useState('');
     const [warning, setWarning] = useState('');
-	const textarea = document.getElementById('comment-body');
-    const button = document.getElementById('comment-submit-btn');
+	const textarea = document.getElementById('comments-add-body');
+    const button = document.getElementById('comments-add-submit-btn');
 
     useEffect(() => {
         setComment('');
         setWarning('');
-        if (textarea) textarea.classList.remove('invalid');
+        if (textarea) textarea.classList.remove('comments-add__textarea--invalid');
     }, [articleId]);
 
 	const submitComment = async event => {
 		event.preventDefault();
 
         if (comment.length === 0) {
-            textarea.classList.add('invalid');
+            textarea.classList.add('comments-add__textarea--invalid');
             setWarning('Cannot be blank!');
         }
         else if (comment.length > 300) {
-            textarea.classList.add('invalid');
+            textarea.classList.add('comments-add__textarea--invalid');
             setWarning('Cannot exceed 300 chars!');
         }
         else {
             button.disabled = true;
             textarea.disabled = true;
-            textarea.classList.remove('invalid');
+            textarea.classList.remove('comments-add__textarea--invalid');
             setWarning('');
 
             try {
@@ -58,11 +58,11 @@ export default function CommentsAdd({ articleId, comments, setComments, totalCom
 
     return (
 		<form className="comments-add" onSubmit={event => submitComment(event)}>
-			<label htmlFor="comment-body">
+			<label htmlFor="comments-add-body">
 				Comment:
 			</label>
 			<textarea
-				id="comment-body"
+				id="comments-add-body"
 				placeholder={
 					isUserLoggedIn ?
 						(!totalComments && !isLoading ? 'Be the first to leave a comment!' : 'Leave a comment')
@@ -73,18 +73,18 @@ export default function CommentsAdd({ articleId, comments, setComments, totalCom
 				disabled={!isUserLoggedIn}
 			/>
 
-            <div className={`comment-overlay ${isUserLoggedIn ? 'hidden' : ''}`}>
+            <div className={`comments-add__overlay ${isUserLoggedIn ? 'hidden' : ''}`}>
                 Please&nbsp;<Link to="#" onClick={scrollToTop}>sign in</Link>&nbsp;to comment
             </div>
 
-			<p className={`warning ${!warning && 'hidden'}`}>
+			<p className={`comments-add__warning ${!warning && 'hidden'}`}>
 				{warning}
 			</p>
 
 			<button
 				type="submit"
-                id="comment-submit-btn"
-				className="submit-btn"
+                id="comments-add-submit-btn"
+				className="comments-add__submit-btn"
 				disabled={!isUserLoggedIn}
 			>
 				Comment

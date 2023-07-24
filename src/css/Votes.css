@@ -5,8 +5,8 @@
     margin: 0;
 }
 
-.votes.negative {
-    color: var(--votes-negative);
+.votes--negative {
+    color: var(--clr-votes-negative);
 }
 
 .votes > button {
@@ -21,20 +21,20 @@
     aspect-ratio: 1;
 }
 .votes > button:hover {
-    background-color: var(--secondary-bg);
+    background-color: var(--clr-secondary-bg);
 }
 
-.votes > button.up {
+.votes__button--up {
     transform: rotate(0deg);
 }
-.votes > button.down {
+.votes__button--down {
     transform: rotate(180deg);
 }
-.votes > button.up-active {
-    background-color: var(--votes-up-bg) !important;
+.votes__button--up-active {
+    background-color: var(--clr-votes-up-bg) !important;
 }
-.votes > button.down-active {
-    background-color: var(--votes-down-bg) !important;
+.votes__button--down-active {
+    background-color: var(--clr-votes-down-bg) !important;
 }
 
 .votes > span {

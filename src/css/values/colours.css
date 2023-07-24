@@ -1,43 +1,43 @@
 :root {
-    --primary-bg: #ffffff;
-    --primary-bg-weak: #f8f8f8;
-    --secondary-bg: #f0f0f0;
-    --contrast-bg: #202020;
+    --clr-primary-bg: #ffffff;
+    --clr-primary-bg-wk: #f8f8f8;
+    --clr-secondary-bg: #f0f0f0;
+    --clr-contrast-bg: #202020;
 
-    --primary-text: #000000;
-    --primary-text-weak: #404040;
-    --contrast-text: #ffffff;
+    --clr-primary-text: #000000;
+    --clr-primary-text-wk: #404040;
+    --clr-contrast-text: #ffffff;
 
-    --primary-href: #0000a0;
-    --primary-href-hover: #0000ff;
+    --clr-primary-href: #0000a0;
+    --clr-primary-href-hover: #0000ff;
 
-    --border-strong: #000000;
-    --border-medium: #606060;
-    --border-weak: #c0c0c0;
+    --clr-border-str: #000000;
+    --clr-border: #606060;
+    --clr-border-wk: #c0c0c0;
 
-    --menu-overlay-bg: #00000080;
-    --loading-bg: #ffffffd0;
+    --clr-sidebar-item-bg: #ffffffc0;
+    
+    --clr-menu-overlay-bg: #00000080;
+    --clr-loading-bg: #ffffffd0;
 
-    --submit-btn-text: #000000;
-    --submit-btn-bg: #33b249;
-    --submit-btn-bg-hover: #47d247;
+    --clr-submit-btn-text: #000000;
+    --clr-submit-btn-bg: #33b249;
+    --clr-submit-btn-bg-hover: #47d247;
 
-    --delete-btn-bg: #ffc0c0;
-    --delete-btn-bg-hover: #ff8080;
-    --delete-btn-border: #a00000;
+    --clr-comment-warning-text: #800000;
+    --clr-comment-warning-bg: #ffc0c0;
+    --clr-comment-warning-border: #a00000;
+    --clr-comment-removed-bg: #ffe0e0;
 
-    --removed-bg: #ffe0e0;
+    --clr-comment-delete-btn-bg: #ffc0c0;
+    --clr-comment-delete-btn-bg-hover: #ff8080;
+    --clr-comment-delete-btn-border: #a00000;
 
-    --votes-negative: #800000;
-    --votes-up-bg: #80ff80;
-    --votes-down-bg: #ffa0a0;
+    --clr-votes-negative: #800000;
+    --clr-votes-up-bg: #80ff80;
+    --clr-votes-down-bg: #ffa0a0;
 
-    --sidebar-item-bg: #ffffffc0;
-
-    --error-text: #ff0000;
-    --error-symbol: #000000;
-    --error-bg: #ffc0c0;
-    --warning-text: #800000;
-    --warning-bg: #ffc0c0;
-    --warning-border: #a00000;
+    --clr-error-text: #ff0000;
+    --clr-error-symbol: #000000;
+    --clr-error-bg: #ffc0c0;
 }

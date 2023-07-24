@@ -8,7 +8,7 @@
         "header header header"
         "nav main sidebar"
         "footer footer footer";
-    background-color: var(--primary-bg);
+    background-color: var(--clr-primary-bg);
 }
 .app > header {
     grid-area: header;
@@ -25,30 +25,14 @@
     grid-area: footer;
 }
 
-.submit-btn {
-    color: var(--submit-btn-text);
-    font-size: 0.9em;
-    padding: 0.3em 0.6em;
-    background-color: var(--submit-btn-bg);
-    border: 1px solid var(--border-medium);
-    border-radius: 0.5em;
-}
-.submit-btn:enabled:hover {
-    background-color: var(--submit-btn-bg-hover);
-    cursor: pointer;
-}
-.submit-btn:disabled {
-    opacity: 0.5;
-}
-
 @media (min-width: 1024px) {
     .app > main {
-        border-right: 1px solid var(--border-weak);
+        border-right: 1px solid var(--clr-border-wk);
     }
 }
 
 @media (min-width: 1366px) {
     .app > main {
-        border-left: 1px solid var(--border-weak);
+        border-left: 1px solid var(--clr-border-wk);
     }
 }

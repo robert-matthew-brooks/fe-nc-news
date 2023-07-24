@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--loading-bg);
+    background-color: var(--clr-loading-bg);
 }
 .loading > img {
     width: 5em;

@@ -53,14 +53,14 @@ export default function Menu({ isMenuVisible, setIsMenuVisible }) {
     return (
         <>
             <div
-                className={`menu-overlay ${!isMenuVisible && 'hidden'}`}
+                className={`nav__overlay ${!isMenuVisible && 'hidden'}`}
                 onClick={() => setIsMenuVisible(false)}
             >
             </div>
 
-            <nav className={!isMenuVisible ? 'closed' : undefined}>
+            <nav className={!isMenuVisible ? 'nav--closed' : undefined}>
                 <button
-                    className="menu-btn"
+                    className="nav__button-close"
                     onClick={() => {setIsMenuVisible(!isMenuVisible)}}
                 >
                     <img src={CrossImg} alt="close menu" />

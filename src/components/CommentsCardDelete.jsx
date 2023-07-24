@@ -8,7 +8,7 @@ export default function CommentsCardDelete({ author, deleteComment }) {
     } = useContext(UserContext);
 
     if (userDetails.username === author) return (
-        <button className="comment-delete" onClick={deleteComment}>
+        <button className="comments-add__delete-btn" onClick={deleteComment}>
            x
         </button>
     );

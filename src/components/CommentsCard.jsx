@@ -56,7 +56,7 @@ export default function CommentsCard({ commentId, author, createdAt, body, votes
                 patchUrl={`/comments/${commentId}`}
             />
 
-            <div className={`deleted-comment ${!isDeleted && 'hidden'}`}>Comment deleted</div>
+            <div className={`comments-card--deleted ${!isDeleted && 'hidden'}`}>Comment deleted</div>
         </article>
     );
 }

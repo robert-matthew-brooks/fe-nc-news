@@ -3,7 +3,7 @@
     display: none;
     width: var(--sidebar-width);
     margin-bottom: calc(var(--footer-height) + 1em);
-    background-color: var(--primary-bg);
+    background-color: var(--clr-primary-bg);
 }
 
 .sidebar > h3 {

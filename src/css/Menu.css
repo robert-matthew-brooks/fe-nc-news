@@ -1,12 +1,13 @@
-.menu-overlay {
+.nav__overlay {
     position: fixed;
     z-index: 98;
     width: 100vw;
     height: 100vh;
-    background-color: var(--menu-overlay-bg);
+    background-color: var(--clr-menu-overlay-bg);
 }
 
-.menu-btn {
+.nav__button-open,
+.nav__button-close {
     width: 1em;
     height: 1em;
     display: flex;
@@ -17,12 +18,18 @@
     border: none;
     border-radius: 0.3em;
 }
-.menu-btn > img {
+.nav__button-close {
+    align-self: flex-end;
+    margin: 0.3em 0.3em 0 0;
+}
+.nav__button-open > img,
+.nav__button-close > img {
     max-height: 100%;
     max-width: 100%;
 }
-.menu-btn:hover {
-    background-color: var(--secondary-bg);
+.nav__button-open:hover,
+.nav__button-close:hover {
+    background-color: var(--clr-secondary-bg);
     cursor: pointer;
 }
 
@@ -39,16 +46,11 @@ nav {
     flex-direction: column;
     overflow-x: hidden;
     padding-bottom: 1.5em;
-    background-color: var(--primary-bg);
+    background-color: var(--clr-primary-bg);
     transition: 0.2s;
 }
-nav.closed {
+.nav--closed {
     left: -300px;
-}
-
-nav > button.menu-btn {
-    align-self: flex-end;
-    margin: 0.3em 0.3em 0 0;
 }
 
 nav > a {
@@ -61,7 +63,7 @@ nav > a:first-of-type {
     margin-top: 0.5em;
 }
 nav > a:hover {
-    background-color: var(--secondary-bg);
+    background-color: var(--clr-secondary-bg);
 }
 
 nav > hr {
@@ -69,7 +71,7 @@ nav > hr {
     height: 0;
     margin: 1.2em auto;
     border: none;
-    border-top: 1px solid var(--border-weak);
+    border-top: 1px solid var(--clr-border-wk);
 }
 
 @media (min-width: 1024px) {
@@ -79,7 +81,7 @@ nav > hr {
 }
 
 @media (min-width: 1366px) {
-    .menu-overlay {
+    .nav__overlay {
         display: none;
     }
 
@@ -97,7 +99,8 @@ nav > hr {
         font-size: 0.9em;
     }
 
-    .menu-btn {
+    .nav__button-open,
+    .nav__button-close {
         display: none;
     }
 }

@@ -50,9 +50,9 @@ export default function Votes({ patchUrl, votes }) {
     }
     else if (!isNaN(votes)) {
         return (
-            <figure className={`votes ${optimisticVotes < 0 && 'negative'}`}>
+            <figure className={`votes ${optimisticVotes < 0 && 'votes--negative'}`}>
                 <button
-                    className={`up ${upVote && 'up-active'}`}
+                    className={`votes__button--up ${upVote && 'votes__button--up-active'}`}
                     onClick={() => submitVote('up')}
                 >
                     <img src={VoteImg} alt="vote up" />
@@ -63,7 +63,7 @@ export default function Votes({ patchUrl, votes }) {
                 </span>
 
                 <button
-                    className={`down ${downVote && 'down-active'}`}
+                    className={`votes__button--down ${downVote && 'votes__button--down-active'}`}
                     onClick={() => submitVote('down')}
                 >
                     <img src={VoteImg} alt="vote down" />

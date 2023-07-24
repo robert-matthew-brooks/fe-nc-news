@@ -20,24 +20,24 @@
     padding: 0.3em;
     font-family: inherit;
     font-size: inherit;
-    background-color: var(--primary-bg-weak);
-    border: 1px solid var(--border-medium);
+    background-color: var(--clr-primary-bg-wk);
+    border: 1px solid var(--clr-border);
     border-radius: 0.3em;
 }
 .comments-add > textarea:disabled {
-    border-color: var(--border-weak);
+    border-color: var(--clr-border-wk);
 }
 
 .comments-add > textarea:focus {
     border-width: 2px;
-    border-color: var(--border-strong);
+    border-color: var(--clr-border-str);
     outline: none;
 }
-.comments-add > textarea.invalid {
-    border-color: var(--warning-border);
+.comments-add__textarea--invalid {
+    border-color: var(--clr-comment-warning-border) !important;
 }
 
-.comments-add > div.comment-overlay {
+.comments-add__overlay {
     position: absolute;
     top: 0;
     width: 100%;
@@ -45,27 +45,41 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--primary-text-weak);
+    color: var(--clr-primary-text-wk);
 }
-.comments-add > div.comment-overlay > a {
-    color: var(--primary-href);
+.comments-add__overlay > a {
+    color: var(--clr-primary-href);
 }
-.comments-add > div.comment-overlay > a:hover {
-    color: var(--primary-href-hover);
+.comments-add__overlay > a:hover {
+    color: var(--clr-primary-href-hover);
 }
 
-/* button styling in App.css */
+.comments-add__submit-btn {
+    color: var(--clr-submit-btn-text);
+    font-size: 0.9em;
+    padding: 0.3em 0.6em;
+    background-color: var(--clr-submit-btn-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: 0.5em;
+}
+.comments-add__submit-btn:enabled:hover {
+    background-color: var(--clr-submit-btn-bg-hover);
+    cursor: pointer;
+}
+.comments-add__submit-btn:disabled {
+    opacity: 0.5;
+}
 
 .comments-add > button[type=submit] {
     display: block;
     margin-left: auto;
 }
 
-.comments-add > p.warning {
+.comments-add > p.comments-add__warning {
     float: left;
     margin: 0;
     padding: 0.3em;
     font-size: 0.9em;
-    color: var(--warning-text);
-    background-color: var(--warning-bg);
+    color: var(--clr-comment-warning-text);
+    background-color: var(--clr-comment-warning-bg);
 }
