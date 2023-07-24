@@ -4,6 +4,7 @@
     aspect-ratio: 1.2;
     overflow: hidden;
     background-size: cover;
+    background-position: center;
     border: 1px solid var(--clr-border-wk);
     border-radius: 0.2em;
 }
