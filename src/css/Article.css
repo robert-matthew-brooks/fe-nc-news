@@ -8,9 +8,9 @@
     flex-grow: 1;
     position: relative;
     width: 100%;
-    max-width: 768px;
+    max-width: var(--main-max-width);
     margin: 0 auto;
-    padding: 0 2em;
+    padding: 0 var(--main--horizontal-padding);
 }
 
 .article-details {

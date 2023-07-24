@@ -19,6 +19,7 @@
 }
 .app > aside {
     grid-area: sidebar;
+    position: relative;
 }
 .app > footer {
     grid-area: footer;

@@ -1,0 +1,10 @@
+:root {
+    --main-max-width: 768px;
+    --main--horizontal-padding: 1.8em;
+
+    --header-height: 2.5em;
+    --footer-height: 6em;
+
+    --sidebar-width: 300px;
+    --sidebar-gutter-width: 25px;
+}

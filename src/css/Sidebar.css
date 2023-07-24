@@ -1,10 +1,4 @@
-:root {
-    --sidebar-width: 300px;
-    --sidebar-gutter-width: 25px;
-}
-
 .sidebar {
-    position: relative;
     min-height: calc(100vh - var(--header-height));
     display: none;
     width: var(--sidebar-width);

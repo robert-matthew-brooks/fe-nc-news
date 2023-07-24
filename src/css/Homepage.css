@@ -1,6 +1,5 @@
 .homepage {
-    padding-left: 3em;
-    padding-right: 3em;
+    padding: 0 var(--main--horizontal-padding);
     background-color: var(--primary-bg);
 }
 
@@ -17,8 +16,7 @@
 
 @media (min-width: 768px) {
     .homepage {
-        padding-left: 4em;
-        padding-right: 4em;
+        padding: 0 2.2em;
     }
 
     .homepage > p > img {

@@ -7,7 +7,7 @@
 
 .articles-list {
     width: 100%;
-    max-width: 768px;
+    max-width: var(--main-max-width);
     display: flex;
     flex-direction: column;
     gap: 1.5em;
@@ -17,5 +17,6 @@
 @media (min-width: 768px) {
     .articles-list {
         gap: 1em;
+        padding: 0 var(--main--horizontal-padding);
     }
 }
