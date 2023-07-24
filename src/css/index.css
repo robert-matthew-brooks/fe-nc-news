@@ -18,6 +18,10 @@ body {
     display: none !important;
 }
 
+.no-scroll {
+    overflow-y: hidden;
+}
+
 .error {
     width: max-content;
     height: max-content;

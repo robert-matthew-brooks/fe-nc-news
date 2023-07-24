@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { showMenu } from '../util/show-overlay-components';
 import HeaderLogin from './HeaderLogin';
 import LogoImg from '../img/logo.svg';
 import MenuImg from '../img/menu.svg';
@@ -9,7 +10,7 @@ export default function Header({ isMenuVisible, setIsMenuVisible }) {
         <header>
             <button
                 className="nav__button-open"
-                onClick={() => setIsMenuVisible(!isMenuVisible)}
+                onClick={() => showMenu(!isMenuVisible, setIsMenuVisible)}
             >
                 <img src={MenuImg} alt="open menu" />
             </button>

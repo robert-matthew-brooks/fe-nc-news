@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { apiFetchTopics } from '../util/api';
+import { showMenu } from '../util/show-overlay-components';
 import { capitalise } from '../util/format';
 import CrossImg from '../img/cross.svg';
 import '../css/Menu.css';
@@ -25,7 +26,7 @@ export default function Menu({ isMenuVisible, setIsMenuVisible }) {
             return (
                 <Link
                     key={i}
-                    onClick={() => setIsMenuVisible(false)}
+                    onClick={() => showMenu(false, setIsMenuVisible)}
                     to={{ pathname: menuItem.path, search: menuItem.query }}
                 >
                     {menuItem.text}
@@ -54,14 +55,14 @@ export default function Menu({ isMenuVisible, setIsMenuVisible }) {
         <>
             <div
                 className={`nav__overlay ${!isMenuVisible && 'hidden'}`}
-                onClick={() => setIsMenuVisible(false)}
+                onClick={() => showMenu(false, setIsMenuVisible)}
             >
             </div>
 
             <nav className={!isMenuVisible ? 'nav--closed' : undefined}>
                 <button
                     className="nav__button-close"
-                    onClick={() => {setIsMenuVisible(!isMenuVisible)}}
+                    onClick={() => {showMenu(!isMenuVisible, setIsMenuVisible)}}
                 >
                     <img src={CrossImg} alt="close menu" />
                 </button>
