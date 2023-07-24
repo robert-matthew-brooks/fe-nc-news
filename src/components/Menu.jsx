@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { apiFetchTopics } from '../util/api.js';
 import { preventScroll } from '../util/scroll.js';
 import { capitalise } from '../util/format.js';
+import Loading from './Loading.jsx';
 import CrossImg from '../img/cross.svg';
 import '../css/Menu.css';
 
@@ -71,14 +72,16 @@ export default function Menu({ isMenuVisible, setIsMenuVisible }) {
 
                 <hr />
 
-                {mapMenuItems(
-                    topics.map(topic => {
-                        return {
-                            text: capitalise(topic.slug),
-                            path: `/topics/${topic.slug}`
+                <Loading isLoading={isLoading}>
+                    {mapMenuItems(
+                        topics.map(topic => {
+                            return {
+                                text: capitalise(topic.slug),
+                                path: `/topics/${topic.slug}`
+                            }
                         }
-                    }
-                ))}
+                    ))}
+                </Loading>
 
                 <hr />
 
