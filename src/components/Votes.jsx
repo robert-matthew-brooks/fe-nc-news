@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { apiPatchVotes } from '../util/api';
-import { getFormattedNumber } from '../util/format';
+import { apiPatchVotes } from '../util/api.js';
+import { getFormattedNumber } from '../util/format.js';
 import VoteImg from '../img/arrow.png';
 import '../css/Votes.css';
 

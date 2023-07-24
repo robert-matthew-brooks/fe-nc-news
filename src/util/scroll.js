@@ -1,12 +1,14 @@
-export function showMenu (isMenuVisible, setIsMenuVisible) {
+export function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+export function preventScroll(isPrevented) {
     const body = document.getElementsByTagName('body')[0];
 
-    if (isMenuVisible) {
-        setIsMenuVisible(true);
+    if (isPrevented) {
         body.classList.add('no-scroll');
     }
     else {
-        setIsMenuVisible(false);
         body.classList.remove('no-scroll');
     }
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom';
 import { apiFetchArticles } from '../util/api.js';
-import { scrollToTop } from '../util/scroll-to-top.js';
+import { scrollToTop } from '../util/scroll.js';
 import Title from './Title.jsx';
 import ArticlesSort from './ArticlesSort.jsx';
 import ArticlesCard from './ArticlesCard';

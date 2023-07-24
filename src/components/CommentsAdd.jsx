@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { apiPostComment } from '../util/api.js';
-import { scrollToTop } from '../util/scroll-to-top.js';
+import { scrollToTop } from '../util/scroll.js';
 import { UserContext } from '../context/User.jsx';
 import '../css/CommentsAdd.css';
 

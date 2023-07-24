@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { UserContext } from '../context/User';
+import { UserContext } from '../context/User.jsx';
 import '../css/CommentsCardDelete.css';
 
 export default function CommentsCardDelete({ author, deleteComment }) {

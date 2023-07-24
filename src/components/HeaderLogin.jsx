@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { apiFetchUser } from '../util/api';
-import { UserContext } from '../context/User';
+import { apiFetchUser } from '../util/api.js';
+import { UserContext } from '../context/User.jsx';
 import '../css/HeaderLogin.css';
 
 export default function HeaderLogin() {

@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
-import { showMenu } from '../util/show-overlay-components';
-import HeaderLogin from './HeaderLogin';
+import { preventScroll } from '../util/scroll.js';
+import HeaderLogin from './HeaderLogin.jsx';
 import LogoImg from '../img/logo.svg';
 import MenuImg from '../img/menu.svg';
 import '../css/Header.css';
 
-export default function Header({ isMenuVisible, setIsMenuVisible }) {
+export default function Header({ setIsMenuVisible }) {
     return (
         <header>
             <button
                 className="nav__button-open"
-                onClick={() => showMenu(!isMenuVisible, setIsMenuVisible)}
+                onClick={() => {preventScroll(true); setIsMenuVisible(true)}}
             >
                 <img src={MenuImg} alt="open menu" />
             </button>
