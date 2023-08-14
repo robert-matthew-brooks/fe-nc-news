@@ -15,7 +15,7 @@ export default function Articles() {
     const [article, setArticle] = useState({});
     const [avatarUrl, setAvatarUrl] = useState();
     const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
+    const [articleLoadingError, setArticleLoadingError] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -23,13 +23,18 @@ export default function Articles() {
             scrollToTop();
 
             try {
-                const { article } = await apiFetchArticle(articleId);
+                const { article } = await apiFetchArticle(articleId+'n');
                 setArticle(article);
                 const { user } =  await apiFetchUser(article.author);
                 setAvatarUrl(user.avatar_url);
             }
-            catch {
-                setIsError(true);
+            catch(err) {
+                console.log(err.response);
+                setArticleLoadingError(
+                    err.response ?
+                    `Error ${err.response.status}: ${err.response.data.msg}` :
+                    'Server error - cannot load article'
+                );
             }
             
             setIsLoading(false);
@@ -38,13 +43,10 @@ export default function Articles() {
         })()
     }, [articleId]);
 
-    if (isError) {
-        return <div className="error">Unable to load article</div>;
-    }
-    else return (
+    return (
         <main className="article">
             <article>
-                <Loading isLoading={isLoading}>
+                <Loading isLoading={isLoading} loadingError={articleLoadingError}>
                     <Title title={article.title} />
 
                     <div className="article-details">
