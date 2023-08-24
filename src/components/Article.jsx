@@ -23,7 +23,7 @@ export default function Articles() {
             scrollToTop();
 
             try {
-                const { article } = await apiFetchArticle(articleId+);
+                const { article } = await apiFetchArticle(articleId);
                 setArticle(article);
                 const { user } =  await apiFetchUser(article.author);
                 setAvatarUrl(user.avatar_url);
